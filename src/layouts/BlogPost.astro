@@ -22,8 +22,9 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 				max-width: 100%;
 				margin: 0;
 			}
-			.hero-image {
+			img.hero-image {
 				width: auto;
+				height: 400px;
 			}
 			.hero-image img {
 				display: block;
@@ -40,8 +41,8 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
-				text-align: center;
 				line-height: 1;
+				color: var(--title-color);
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
@@ -58,6 +59,13 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 				grid-template-columns: auto 1fr;
 				grid-gap: 10px;
 			}
+
+			@media screen and (max-width: 720px) {
+				img.hero-image {
+					width: 100%;
+					height: auto;
+				}
+			}
 		</style>
 	</head>
 
@@ -66,7 +74,7 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <img class="hero-image" src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">

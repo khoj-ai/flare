@@ -97,6 +97,7 @@ const posts = (await getCollection('posts')).sort(
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
 									</p>
+									<p class="excerpt">{post.data.description}</p>
 								</a>
 							</li>
 						))

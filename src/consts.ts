@@ -12,6 +12,13 @@ export const AUTHOR_METADATA = {
         "twitter": "https://twitter.com/sabaimran_go",
         "github": "https://github.com/sabaimran"
     },
+    "debanjum": {
+        "name": "Debanjum Singh Solanky",
+        "bio": "Co-Founder, CEO. I travel, code, write.",
+        "avatar": "https://avatars.githubusercontent.com/u/6413477?v=4",
+        "twitter": "https://twitter.com/debanjum",
+        "github": "https://github.com/debanjum"
+    },
     "khoj": {
         "name": "Khoj AI",
         "bio": "Khoj is an application where people can have personalized AI that works for them.",

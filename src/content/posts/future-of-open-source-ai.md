@@ -1,15 +1,12 @@
 ---
-title: "The Future of Personal AI: Embracing Open-Source Innovation"
+title: "Personal AI must be open-source"
 author: saba
-authors:
-  - saba
-tags: [customizable, trust, observability, open-source, ai, artificial-intelligence]
 description: There are critical reasons why the next generation of consumer tools for personal AI should be open source.
 heroImage: /futuristic_green_utopia.png
 pubDate: 2024-02-28
 ---
 
-## Why closed, personalized AI services will fail
+## Closed, personalized AI services fall short
 About a week ago, Google launched its new, rebranded personal AI assistant, Gemini. It got rather [mixed reviews](https://twitter.com/mjuric/status/1761981816125469064). At its core, the major problem Gemini has had is that it was overtly censored. Users were finding that it was resolute to only generate images of people who were non-white, despite the explicit prompts it received to do otherwise. If you want to see for yourself, [here](https://twitter.com/debarghya_das/status/1759786243519615169) are [some](https://twitter.com/iamyesyouareno/status/1760350903511449717) [examples](https://twitter.com/yishan/status/176085921487513216).
 
 The image generation capability got so much backlash that Google [paused the feature](https://web.archive.org/web/20240226020752/https://blog.google/products/gemini/gemini-image-generation-issue/) for the time being. I will say, though, the images it generated were really impressive!

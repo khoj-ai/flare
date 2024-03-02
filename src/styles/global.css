@@ -3,10 +3,12 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-
- :root {
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+ 
+:root {
     --accent: #FFB347; /* Pastel Orange */
     --accent-dark: #FF8008; /* Darker Pastel Orange */
+	--title-color: #3f51b5; /* A mysterious blue */
     --black: 0, 0, 0; /* Pure Black */
     --gray: 128, 128, 128; /* Medium Gray */
     --gray-light: 211, 211, 211; /* Light Gray */
@@ -20,6 +22,7 @@
 :root.dark {
     --accent: #fbbc04; /* Google Yellow */
     --accent-dark: #e1a604; /* Darker Google Yellow */
+	--title-color: #F45732; /* A rich Orange */
     --black: 0, 0, 0; /* Pure Black */
     --gray: 128, 128, 128; /* Medium Gray */
     --gray-light: 211, 211, 211; /* Light Gray */
@@ -30,21 +33,14 @@
 }
 
 @font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
+	font-family: 'Tajawal';
+	src: url(http://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1nzGBC5xLhLE.woff2) format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
 body {
-	font-family: 'Atkinson', sans-serif;
+	font-family: 'Tajawal', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
