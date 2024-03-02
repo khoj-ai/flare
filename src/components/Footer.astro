@@ -1,0 +1,38 @@
+---
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} Khoj AI. All rights reserved.
+	<div class="social-links">
+		<a href="https://docs.khoj.dev" target="_blank" rel="noopener noreferrer">
+			Docs
+		</a>
+		<a href="https://github.com/khoj-ai/khoj" target="_blank" rel="noopener noreferrer">
+			GitHub
+		</a>
+		<a href="https://khoj.dev" target="_blank" rel="noopener noreferrer">
+			Khoj
+		</a>
+	</div>
+</footer>
+<style>
+	footer {
+		text-align: center;
+		padding: 20px;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+</style>
