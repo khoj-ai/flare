@@ -8,7 +8,7 @@ import { AUTHOR_METADATA } from '../consts';
 
 type Props = CollectionEntry<'posts'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, author } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, author, tldr } = Astro.props;
 
 const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 ---
@@ -54,6 +54,12 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 				font-style: italic;
 			}
 
+			p.tldr {
+				padding: 1em;
+				box-shadow: var(--box-shadow);
+				border: 1px solid var(--accent);
+			}
+
 			div.author {
 				display: grid;
 				grid-template-columns: auto 1fr;
@@ -91,6 +97,7 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 						<h1>{title}</h1>
 						<hr />
 					</div>
+					{tldr && <p class="tldr">TLDR: {tldr}</p>}
 					<slot />
 					<br />
 					<div class="author">
