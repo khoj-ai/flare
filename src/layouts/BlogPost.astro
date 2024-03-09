@@ -67,6 +67,18 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 				grid-template-columns: auto 1fr;
 				grid-gap: 10px;
 			}
+			div.share-info {
+				display: grid;
+				grid-template-rows: auto 1fr;
+			}
+			a.share-button {
+				text-decoration: none;
+			}
+
+			img.share-button {
+				border-radius: 0px;
+			}
+
 			@media screen and (max-width: 720px) {
 				main {
 					display: block;
@@ -120,6 +132,44 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 							<div class="author-name">{authorObj.name}</div>
 						</a>
 						<div class="author-bio">{authorObj.bio}</div>
+					</div>
+				</div>
+				<br />
+				<div class="share-info">
+					<div class="share-title">Share This Post</div>
+					<div class="share-buttons">
+						<a
+							class="share-button"
+							href={`https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(
+								`${Astro.url}`
+							)}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								class="share-button"
+								src="/icons/twitter.svg"
+								alt="Share on Twitter"
+								width={32}
+								height={32}
+							/>
+						</a>
+						<a
+							class="share-button"
+							href={`https://www.linkedin.com/sharing/share-offsite?url='${encodeURIComponent(
+								`${Astro.url}`
+							)}'&title=${title}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								class="share-button"
+								src="/icons/linkedin.svg"
+								alt="Share on LinkedIn"
+								width={32}
+								height={32}
+							/>
+						</a>
 					</div>
 				</div>
 			</aside>
