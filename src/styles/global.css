@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
  
 :root {
-    --accent: #007BFF; /* Bright Blue */
+    --accent: #0257b3; /* Bright Blue */
     --accent-dark: #0056b3; /* Darker Blue */
 	--title-color: #3f51b5; /* A mysterious blue */
     --black: 0, 0, 0; /* Pure Black */
@@ -20,7 +20,7 @@
 
 /* Dark mode */
 :root.dark {
-    --accent: #0dcaf0; /* Slightly Desaturated Blue */
+    --accent: #a4e9f6; /* Slightly Desaturated Blue */
     --accent-dark: #0a58ca; /* Darker Desaturated Blue */
 	--title-color: #00B8D9; /* Cyan */
     --black: 255, 255, 255; /* Pure White for dark mode */
@@ -133,9 +133,15 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+details {
+	background-color: rgb(var(--gray-light));
+	border-radius: 8px;
+	padding: 1em;
+	margin: 1em 0;
+}
 
 html.dark {
-	background-color: #282735;
+	background-color: #222127;
 	color: rgb(252, 251, 242);
 }
 

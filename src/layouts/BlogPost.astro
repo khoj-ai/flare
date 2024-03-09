@@ -18,25 +18,29 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
+				display: grid;
+				grid-template-columns: auto auto;
+				grid-gap: 6em;
+				width: 70vw;
+			}
+			article {
+				flex: 1 0 auto;
+				padding: 1em;
+			}
+			aside {
+				flex: 1 0 300px;
+				padding: 1em;
 			}
 			img.hero-image {
-				width: auto;
-				height: 400px;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
+				width: 100%;
+				height: auto;
 				border-radius: 12px;
 				box-shadow: var(--box-shadow);
 			}
 			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
+				width: 100%;
+				max-width: 100%;
 				margin: auto;
-				padding: 1em;
 			}
 			.title {
 				margin-bottom: 1em;
@@ -53,35 +57,31 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 			.last-updated-on {
 				font-style: italic;
 			}
-
 			p.tldr {
 				padding: 1em;
 				box-shadow: var(--box-shadow);
 				border: 1px solid var(--accent);
 			}
-
 			div.author {
 				display: grid;
 				grid-template-columns: auto 1fr;
 				grid-gap: 10px;
 			}
-
 			@media screen and (max-width: 720px) {
-				img.hero-image {
-					width: 100%;
-					height: auto;
+				main {
+					display: block;
+					width: 90vw;
+				}
+				article, aside {
+					flex: 1 0 100%;
 				}
 			}
 		</style>
 	</head>
-
 	<body>
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img class="hero-image" src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title">
 						<div class="date">
@@ -99,26 +99,30 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 					</div>
 					{tldr && <p class="tldr">TLDR: {tldr}</p>}
 					<slot />
-					<br />
-					<div class="author">
-						<div class="author-image">
-							<img
-								src={authorObj.avatar}
-								alt={authorObj.name}
-								width={64}
-								height={64}
-								style={{ borderRadius: '50%' }}
-							/>
-						</div>
-						<div class="author-info">
-							<a href={authorObj.github} class="author-link">
-								<div class="author-name">{authorObj.name}</div>
-							</a>
-							<div class="author-bio">{authorObj.bio}</div>
-						</div>
-					</div>
 				</div>
 			</article>
+			<aside>
+				<div class="hero-image">
+					{heroImage && <img class="hero-image" src={heroImage} alt="" />}
+				</div>
+				<div class="author">
+					<div class="author-image">
+						<img
+							src={authorObj.avatar}
+							alt={authorObj.name}
+							width={64}
+							height={64}
+							style={{ borderRadius: '50%' }}
+						/>
+					</div>
+					<div class="author-info">
+						<a href={authorObj.github} class="author-link">
+							<div class="author-name">{authorObj.name}</div>
+						</a>
+						<div class="author-bio">{authorObj.bio}</div>
+					</div>
+				</div>
+			</aside>
 		</main>
 		<Footer />
 	</body>
