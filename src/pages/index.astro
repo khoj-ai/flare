@@ -37,10 +37,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	main {
 		position: absolute;
 		top: 5%;
-		/* left: 50%; */
-		/* transform: translate(-50%, -50%); */
-		color: white;
-		/* font-size: 2em; */
 		text-align: left;
 	}
 
@@ -55,6 +51,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		}
 		main {
 			position: relative;
+		}
+	}
+
+	@media screen and (min-width: 600px)
+	{
+		main {
+			color: white;
 		}
 	}
 </style>
