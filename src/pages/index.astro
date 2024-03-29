@@ -9,9 +9,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+        <script src="/scripts/globe.js" defer></script>
 	</head>
 	<body>
 		<Header />
+		<div id="globe"></div>
+
 		<main>
 			<h1>🏮 Hello, Explorer!</h1>
 			<p>
@@ -29,3 +33,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Footer />
 	</body>
 </html>
+<style>
+	main {
+		position: absolute;
+		top: 5%;
+		/* left: 50%; */
+		/* transform: translate(-50%, -50%); */
+		color: white;
+		/* font-size: 2em; */
+		text-align: left;
+	}
+
+	#globe {
+		/* position: absolute; */
+	}
+
+	@media screen and (max-width: 600px)
+	{
+		#globe {
+			display: none;
+		}
+		main {
+			position: relative;
+		}
+	}
+</style>
