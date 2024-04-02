@@ -19,9 +19,8 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 		<style>
 			main {
 				display: grid;
-				grid-template-columns: auto auto;
-				grid-gap: 6em;
-				width: 70vw;
+				grid-template-rows: auto auto;
+				width: 50vw;
 			}
 			article {
 				flex: 1 0 auto;
@@ -109,6 +108,23 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 						<h1>{title}</h1>
 						<hr />
 					</div>
+					<div class="author">
+						<div class="author-image">
+							<img
+								src={authorObj.avatar}
+								alt={authorObj.name}
+								width={64}
+								height={64}
+								style={{ borderRadius: '50%' }}
+							/>
+						</div>
+						<div class="author-info">
+							<a href={authorObj.twitter} class="author-link">
+								<div class="author-name">{authorObj.name}</div>
+							</a>
+							<div class="author-bio">{authorObj.bio}</div>
+						</div>
+					</div>
 					{tldr && <p class="tldr">TLDR: {tldr}</p>}
 					<slot />
 				</div>
@@ -116,23 +132,6 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 			<aside>
 				<div class="hero-image">
 					{heroImage && <img class="hero-image" src={heroImage} alt="" />}
-				</div>
-				<div class="author">
-					<div class="author-image">
-						<img
-							src={authorObj.avatar}
-							alt={authorObj.name}
-							width={64}
-							height={64}
-							style={{ borderRadius: '50%' }}
-						/>
-					</div>
-					<div class="author-info">
-						<a href={authorObj.twitter} class="author-link">
-							<div class="author-name">{authorObj.name}</div>
-						</a>
-						<div class="author-bio">{authorObj.bio}</div>
-					</div>
 				</div>
 				<br />
 				<div class="share-info">

@@ -25,7 +25,7 @@ Below is an example of an image generation prompt I've used with my data in Khoj
 ![a picture showing many happy people in parks, with buses, and some iconic buildings in mexico city](/my_impressions_of_cdmx.png)
 
 <details>
-<summary>Khoj's Inferred Query</summary>
+<summary>How Khoj interprets the prompt</summary>
 Create an image that captures the essence of Mexico City (CDMX) as a place of warmth, community, and vibrant culture, reflecting the user's deep emotional connection and nostalgia for the city. The composition should include elements that evoke the user's fond memories and experiences as described in their notes:
 
 1. The atmosphere should be alive with local music, perhaps illustrated by the inclusion of street-side food stalls where you can almost hear the strumming of Requinto guitars and the sounds of mariachi bands, providing a sense of the unique cultural soundscape.
