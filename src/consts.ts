@@ -29,85 +29,8 @@ export const AUTHOR_METADATA = {
   },
 };
 
-export const background_config = {
-  background: {
-    color: {
-      value: "#F9F5DE",
-    },
-  },
-  fpsLimit: 120,
-  interactivity: {
-    events: {
-      onClick: {
-        enable: true,
-        mode: "repulse",
-      },
-      onHover: {
-        enable: true,
-        mode: "grab",
-      },
-    },
-    modes: {
-      push: {
-        distance: 200,
-        duration: 15,
-      },
-      grab: {
-        distance: 150,
-      },
-    },
-  },
-  particles: {
-    color: {
-      value: ["#2C4E80","#00215E","#FC4100","#280274","#FFD300","#FF971D","#FF3213","#FF69B4","#FFA500","#FF4500","#FF6347","#FF8C00","#FFD700","#FFDAB9","#FFDEAD","#FFE4B5","#FFE4C4","#FFE4E1","#FFEBCD","#FFEFD5","#FFFAF0","#FFFAFA","#FFFF00","#FFFFE0","#FFFFF0","#FFFFFF"],
-    },
-    links: {
-      color: "#DD761C",
-      distance: 100,
-      enable: true,
-      opacity: 0.3,
-      width: 1,
-    },
-    move: {
-      direction: "none",
-      enable: true,
-      outModes: {
-        default: "bounce",
-      },
-      random: true,
-      speed: 3,
-      straight: false,
-    },
-    number: {
-      density: {
-        enable: true,
-      },
-      value: 250,
-    },
-    opacity: {
-      value: 1.0,
-    },
-    shape: {
-      type: "circle",
-    },
-    size: {
-      value: { min: 1, max: 7},
-    },
-  },
-  detectRetina: true,
-  fullScreen: {
-    enable: true,
-    zIndex: -1,
-  },
-  style: {
-    position: "absolute",
-    height: "80vh",
-    width: "100%",
-    top: "80px",
-  },
-};
 
-export const bg_config = {
+export const background_config = {
   autoPlay: true,
   background: {
     color: {
