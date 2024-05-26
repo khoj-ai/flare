@@ -2,64 +2,82 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION} from '../consts';
+import {background_config, bg_config} from '../consts'
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
+
+const options: ISourceOptions = bg_config
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <head>
+        <script type="module">FDE49E
+            import astroParticles from 'https://cdn.jsdelivr.net/npm/astro-particles@2.10.0/+esm'
+        </script>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
         <script src="/scripts/globe.js" defer></script>
-		<link rel="sitemap" href="/sitemap-index.xml" />
-	</head>
-	<body>
-		<Header />
-		<div id="globe"></div>
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <script>
+            import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+            import { loadFull } from "tsparticles";
 
-		<main>
-			<h1>🏮 Hello, Explorer!</h1>
-			<p>
-				Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
-			</p>
-			<p>
-				Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
-			</p>
-			<p>We are working on core consumer AI applications to help make the future of digital services trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
-			<p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
-			<p>
-				Have fun! If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+            window.particlesInit = async function (engine: Engine) {
+                await loadFull(engine);
+            }
+            window.particlesLoaded = function (container: Container) {
+                console.log("particlesLoaded callback");
+            }
+        </script>
+    </head>
+    <body>
+        <Header />
+        <div id="globe"></div>
+        <main>
+            
+            <h1>🏮 Hello, Explorer!</h1>
+            <p>
+                Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
+            </p>
+            <p>
+                Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
+            </p>
+            <p>We are working on core consumer AI applications to help make the future of digital services trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
+            <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
+            <p>
+                Have fun! If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
+            </p>
+            <Particles id="tsparticles" options={options} init="particlesInit" />
+        </main>
+        
+        <Footer />
+    </body>
 </html>
 <style>
-	main {
-		position: absolute;
-		top: 5%;
-		text-align: left;
-	}
+    main {
+        top: 5%;
+        text-align: left;
+        position: relative;
+        color: black
 
-	#globe {
-		/* position: absolute; */
-	}
+    }
+    main a{
+        color: blue
+    }
+    #globe {
+        /* position: absolute; */
+    }
 
-	@media screen and (max-width: 600px)
-	{
-		#globe {
-			display: none;
-		}
-		main {
-			position: relative;
-		}
-	}
-
-	@media screen and (min-width: 600px)
-	{
-		main {
-			color: white;
-		}
-	}
-	
+    @media screen and (max-width: 600px) {
+        #globe {
+            display: none;
+        }
+        main {
+            position: relative;
+        }
+        #tsParticles{
+            display: none
+        }
+    }
 </style>
