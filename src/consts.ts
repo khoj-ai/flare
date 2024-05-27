@@ -521,8 +521,8 @@ export const background_config = {
   smooth: false,
   style: {
     position: "absolute",
-    height: "80vh",
     width: "100%",
+    height: "800px",
     top: "80px",
   },
   themes: [],
