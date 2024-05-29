@@ -309,10 +309,7 @@ export const background_config: ISourceOptions = {
                 width: 3000,
                 height: 2000
             },
-            limit: {
-                mode: "delete",
-                value: 0
-            },
+            limit: 5000,
             value: 400
         },
         opacity: {
