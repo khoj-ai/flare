@@ -23,7 +23,7 @@ const options: ISourceOptions = background_config
                 await loadFull(engine);
             }
             window.particlesLoaded = function (container: Container) {
-                console.log("particlesLoaded callback");
+                console.log("loaded particles");
             }
         </script>
     </head>
@@ -39,10 +39,10 @@ const options: ISourceOptions = background_config
                 <p>
                     Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
                 </p>
-                <p>We are working on core consumer AI applications to help make the future of digital services trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
+                <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
                 <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
                 <p>
-                    Have fun! If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
+                    If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
                 </p>
             </main>
             <Particles params={{}} id="tsparticles" options={options} init="particlesInit" />
@@ -62,10 +62,16 @@ const options: ISourceOptions = background_config
         position: relative;
     }
 
-    @media screen and (max-width: 720px) {
-        main{
-            margin-bottom: 150px;
-        }
-
+    astro-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0;
+        margin: 0;
+        z-index: 0; /* if you use -1 you have to set to `"window"` the interactivity.detectsOn property */
     }
+
+
 </style>
