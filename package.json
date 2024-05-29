@@ -15,6 +15,9 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
     "astro": "^4.4.8",
-    "typescript": "^5.3.3"
+    "astro-particles": "^2.10.0",
+    "typescript": "^5.3.3",
+    "tsparticles": "2.12",
+    "tsparticles-engine": "^2.12.0"
   }
 }

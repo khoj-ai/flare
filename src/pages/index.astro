@@ -2,64 +2,76 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION} from '../consts';
+import {background_config} from '../consts'
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
+
+const options: ISourceOptions = background_config
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-        <script src="/scripts/globe.js" defer></script>
-		<link rel="sitemap" href="/sitemap-index.xml" />
-	</head>
-	<body>
-		<Header />
-		<div id="globe"></div>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <script>
+            import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+            import { loadFull } from "tsparticles";
 
-		<main>
-			<h1>🏮 Hello, Explorer!</h1>
-			<p>
-				Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
-			</p>
-			<p>
-				Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
-			</p>
-			<p>We are working on core consumer AI applications to help make the future of digital services trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
-			<p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
-			<p>
-				Have fun! If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+            window.particlesInit = async function (engine: Engine) {
+                await loadFull(engine);
+            }
+            window.particlesLoaded = function (container: Container) {
+                console.log("loaded particles");
+            }
+        </script>
+    </head>
+    <body>
+        <Header />
+        <div id="content">
+            <main>
+                
+                <h1>🏮 Hello, Explorer!</h1>
+                <p>
+                    Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
+                </p>
+                <p>
+                    Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
+                </p>
+                <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
+                <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
+                <p>
+                    If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
+                </p>
+            </main>
+            <Particles params={{}} id="tsparticles" options={options} init="particlesInit" />
+        </div>
+        <Footer />
+    </body>
 </html>
 <style>
-	main {
-		position: absolute;
-		top: 5%;
-		text-align: left;
-	}
+     main {
+        color: black;
+        margin: 30px auto;
+    }
+    main a{
+        color: blue;
+    }
+    #content{
+        position: relative;
+    }
 
-	#globe {
-		/* position: absolute; */
-	}
+    astro-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0;
+        margin: 0;
+        z-index: 0; /* if you use -1 you have to set to `"window"` the interactivity.detectsOn property */
+    }
 
-	@media screen and (max-width: 600px)
-	{
-		#globe {
-			display: none;
-		}
-		main {
-			position: relative;
-		}
-	}
 
-	@media screen and (min-width: 600px)
-	{
-		main {
-			color: white;
-		}
-	}
-	
 </style>
