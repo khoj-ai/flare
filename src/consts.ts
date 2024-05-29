@@ -1,5 +1,6 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
+import type { ISourceOptions } from "tsparticles-engine";
 
 export const SITE_TITLE = "Khoj";
 export const SITE_DESCRIPTION =
@@ -30,7 +31,7 @@ export const AUTHOR_METADATA = {
 };
 
 
-export const background_config = {
+export const background_config: ISourceOptions = {
     autoPlay: true,
     background: {
         color: {
@@ -41,16 +42,6 @@ export const background_config = {
         repeat: "",
         size: "",
         opacity: 1
-    },
-    backgroundMask: {
-        composite: "destination-out",
-        cover: {
-            color: {
-                value: "#fff"
-            },
-            opacity: 1
-        },
-        enable: false
     },
     clear: true,
     defaultThemes: {},

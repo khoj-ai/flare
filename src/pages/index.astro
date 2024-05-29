@@ -16,14 +16,11 @@ const options: ISourceOptions = background_config
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <script>
-            import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+            import { type Engine } from "tsparticles-engine";
             import { loadFull } from "tsparticles";
 
-            window.particlesInit = async function (engine: Engine) {
+            (window as any).particlesInit = async function (engine: Engine) {
                 await loadFull(engine);
-            }
-            window.particlesLoaded = function (container: Container) {
-                console.log("loaded particles");
             }
         </script>
     </head>
