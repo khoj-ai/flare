@@ -45,6 +45,12 @@
   
       const isDark = element.classList.contains("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
+
+      if(isDark){
+        document.body.style.backgroundColor = '#222127'
+      }else{
+        document.body.style.backgroundColor = '#F9F5DE'
+      }
     }
   
     document.getElementById("themeToggle").addEventListener("click", handleToggleClick);

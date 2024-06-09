@@ -55,6 +55,8 @@ main {
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
+	text-align: center;
+	font-size: 1.4rem;
 }
 h1,
 h2,
