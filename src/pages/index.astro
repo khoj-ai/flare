@@ -33,18 +33,20 @@ const options: ISourceOptions = background_config
         <div id="content">
             <main>
                 <canvas id="scene"></canvas>
-                
-                <p>
-                    Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
-                </p>
-                <p>
-                    Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
-                </p>
-                <p>We are working on core consumer AI applications to help make the future of digital services trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
-                <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
-                <p>
-                    Have fun! If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
-                </p>
+
+                <div id="text">
+                    <p>
+                        Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
+                    </p>
+                    <p>
+                        Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
+                    </p>
+                    <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
+                    <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
+                    <p>
+                        If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
+                    </p>
+                </div>
             </main>
             <Particles id="tsparticles" options={options} init="particlesInit" />
         </div>
@@ -69,15 +71,22 @@ const options: ISourceOptions = background_config
     canvas{
         z-index:10;
     }
-    
+    #text{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
+        const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
         const theme = localStorage.getItem('theme');
         if (theme === 'dark') {
-            document.body.style.backgroundColor = '#222127';
+            document.body.style.backgroundColor = darkBackgroundColor;
         } else {
-            document.body.style.backgroundColor = '#F9F5DE';
+            document.body.style.backgroundColor = lightBackgroundColor;
         }
     });
 
@@ -89,7 +98,15 @@ const options: ISourceOptions = background_config
     mouse = {x:0,y:0},
     radius = 0.2;
 
-    var colors = ["#468966","#FFF0A5", "#FFB03B","#B64926", "#8E2800"];
+    const rootStyles = getComputedStyle(document.documentElement);
+    const colors = [
+        rootStyles.getPropertyValue('--color1').trim(),
+        rootStyles.getPropertyValue('--color2').trim(),
+        rootStyles.getPropertyValue('--color3').trim(),
+        rootStyles.getPropertyValue('--color4').trim(),
+        rootStyles.getPropertyValue('--color5').trim()
+    ];
+
     
     var ww = canvas.width = 100;
     var wh = canvas.height = 100;
