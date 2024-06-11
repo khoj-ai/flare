@@ -58,18 +58,23 @@ const options: ISourceOptions = background_config
         position: relative;
     }
      main {
-        margin: 30px auto;
         display: flex;
         flex-direction: column;
         justify-content:center;
         align-items: center;
+        position: relative;
+        padding-top: 270px;
     }
     #content{
         position: relative;
+        margin-bottom:-120px;
     } 
-
-    canvas{
+    #scene{
         z-index:10;
+        position: absolute;
+        top:50px;
+
+
     }
     #text{
         display: flex;
@@ -79,6 +84,7 @@ const options: ISourceOptions = background_config
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        console.log(1)
         const rootStyles = getComputedStyle(document.documentElement);
         const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
         const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
@@ -89,7 +95,6 @@ const options: ISourceOptions = background_config
             document.body.style.backgroundColor = lightBackgroundColor;
         }
     });
-
 
     var canvas = document.querySelector("#scene"),
     ctx = canvas.getContext("2d"),
@@ -218,13 +223,24 @@ const options: ISourceOptions = background_config
     }
     };
 
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("touchmove", onTouchMove);
-    window.addEventListener("click", onMouseClick);
-    window.addEventListener("touchend", onTouchEnd);
+    function handleEventListeners() {
+        if (window.innerWidth <= 650) {
+            initScene();
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("touchmove", onTouchMove);
+            window.removeEventListener("click", onMouseClick);
+            window.removeEventListener("touchend", onTouchEnd);
+        } else {
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("touchmove", onTouchMove);
+            window.addEventListener("click", onMouseClick);
+            window.addEventListener("touchend", onTouchEnd);
+        }
+    }
+
     initScene();
+    handleEventListeners();
     requestAnimationFrame(render);
 
-
-
+    window.addEventListener('resize', handleEventListeners);
 </script>

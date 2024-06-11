@@ -46,10 +46,13 @@
       const isDark = element.classList.contains("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
 
-      if(isDark){
-        document.body.style.backgroundColor = '#222127'
-      }else{
-        document.body.style.backgroundColor = '#F9F5DE'
+      const rootStyles = getComputedStyle(document.documentElement);
+      const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
+      const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
+      if (isDark) {
+          document.body.style.backgroundColor = darkBackgroundColor;
+      } else {
+          document.body.style.backgroundColor = lightBackgroundColor;
       }
     }
   
