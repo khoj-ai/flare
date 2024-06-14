@@ -1,0 +1,45 @@
+---
+interface Props {
+	title: string;
+    link: string;
+}
+
+const { title, link } = Astro.props;
+---
+
+<div>
+    <a href={link}>
+        <p>{title}</p>
+    </a>
+</div>
+
+<style>
+    div {
+        border-radius: 12px;
+        padding: 10px;
+        margin: 10px;
+        background: linear-gradient(45deg, var(--accent), #9198e5);
+    }
+
+    div:hover {
+        background: linear-gradient(45deg, #9198e5, var(--accent));
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    p {
+        font-size: x-large;
+        margin: 0;
+    }
+
+    /* If the system is in dark mode, use the light mode color */
+    @media (prefers-color-scheme: dark) {
+        a {
+            color: black;
+        }
+    }
+</style>
+
