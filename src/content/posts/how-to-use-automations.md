@@ -15,7 +15,7 @@ Automations is an experimental feature we've released that allows you to stay fo
 
 ![automation_example](/automation_bedtime_story.png)
 
-Try these out. Your time zone will automatically be inferred from your location.n   You can send yourself a Preview message to see what the Khoj output would look like before you commit to the schedule.
+Try these out. Your time zone will automatically be inferred from your location. You can send yourself a Preview message to see what the Khoj output would look like before you commit to the schedule.
 - [Give me a summary of the latest news about marine biology.](https://app.khoj.dev/automations?subject=Latest%20Marine%20Biology%20News%20Summary&crontime=45%2010%20*%20*%200&queryToRun=Give%20me%20a%20summary%20of%20the%20latest%20news%20about%20marine%20biology).
 - [Paint me a watercolor image depicting mountains, nature, futurism. Take into account the weather.](https://app.khoj.dev/automations?subject=Watercolor%20Painting%3A%20Mountains%2C%20Nature%2C%20and%20Futurism%20with%20Weather%20Consideration&crontime=00%209%20*%20*%206&queryToRun=Paint%20me%20a%20watercolor%20image%20depicting%20mountains%2C%20nature%2C%20futurism.%20Take%20into%20account%20the%20weather.)
 - [Tell me about upcoming video game releases this month.](https://app.khoj.dev/automations?subject=Upcoming%20Video%20Game%20Releases%20This%20Month&crontime=00%2010%201%20*%20*&queryToRun=Tell%20me%20about%20upcoming%20video%20game%20releases%20this%20month)
