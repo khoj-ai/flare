@@ -1,5 +1,5 @@
 ---
-title: "Extend your second brain in Obsidian with Khoj AI"
+title: "Extend your Second Brain in Obsidian with AI"
 author: saba
 description: The Khoj AI assistant now lives in the side panel of Obsidian, allowing you to stay in context while generating text. You can also easily pull the generated data into your work to store, edit, and index it.
 tldr: "Khoj AI in Obsidian now features a side panel for seamless in-document assistance and a button for easy text integration, enhancing its compatibility with Obsidian's local-first philosophy and maintaining options for cloud scalability or local-only use."

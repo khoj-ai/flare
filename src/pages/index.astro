@@ -8,6 +8,7 @@ import Particles from "astro-particles";
 import type { ISourceOptions } from "tsparticles-engine";
 
 const options: ISourceOptions = background_config
+
 ---
 
 <!doctype html>
@@ -16,11 +17,14 @@ const options: ISourceOptions = background_config
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <script>
-            import { type Engine } from "tsparticles-engine";
+            import { type Container, type Engine, tsParticles } from "tsparticles-engine";
             import { loadFull } from "tsparticles";
 
-            (window as any).particlesInit = async function (engine: Engine) {
+            window.particlesInit = async function (engine: Engine) {
                 await loadFull(engine);
+            }
+            window.particlesLoaded = function (container: Container) {
+                console.log("particlesLoaded callback");
             }
         </script>
     </head>
@@ -28,47 +32,216 @@ const options: ISourceOptions = background_config
         <Header />
         <div id="content">
             <main>
-                
-                <h1>🏮 Hello, Explorer!</h1>
-                <p>
-                    Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
-                </p>
-                <p>
-                    Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
-                </p>
-                <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
-                <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
-                <p>
-                    If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
-                </p>
+                <canvas id="scene"></canvas>
+
+                <div id="text">
+                    <p>
+                        Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
+                    </p>
+                    <p>
+                        Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
+                    </p>
+                    <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
+                    <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
+                    <p>
+                        If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
+                    </p>
+                </div>
             </main>
-            <Particles params={{}} id="tsparticles" options={options} init="particlesInit" />
+            <Particles id="tsparticles" options={options} init="particlesInit" />
         </div>
         <Footer />
     </body>
 </html>
 <style>
-     main {
-        color: black;
-        margin: 30px auto;
+    body{
+        position: relative;
+        overflow: hidden;
     }
-    main a{
-        color: blue;
+     main {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        position: relative;
+        padding-top: 270px;
     }
     #content{
         position: relative;
-    }
-
-    astro-particles {
+        margin-bottom:-120px;
+    } 
+    #scene{
+        z-index:10;
         position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        padding: 0;
-        margin: 0;
-        z-index: 0; /* if you use -1 you have to set to `"window"` the interactivity.detectsOn property */
+        top:50px;
+        width: 150%;
+        max-width: 2000px;
+    }
+    #text{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log(1)
+        const rootStyles = getComputedStyle(document.documentElement);
+        const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
+        const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.body.style.backgroundColor = darkBackgroundColor;
+        } else {
+            document.body.style.backgroundColor = lightBackgroundColor;
+        }
+    });
+
+    var canvas = document.querySelector("#scene"),
+    ctx = canvas.getContext("2d"),
+    particles = [],
+    amount = 0,
+    mouse = {x:0,y:0},
+    radius = 0.2;
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const colors = [
+        rootStyles.getPropertyValue('--color1').trim(),
+        rootStyles.getPropertyValue('--color2').trim(),
+        rootStyles.getPropertyValue('--color3').trim(),
+        rootStyles.getPropertyValue('--color4').trim(),
+        rootStyles.getPropertyValue('--color5').trim()
+    ];
+
+    
+    var ww = canvas.width = 100;
+    var wh = canvas.height = 100;
+
+    function Particle(x,y){
+    this.x =  Math.random()*ww;
+    this.y =  Math.random()*wh;
+    this.dest = {
+        x : x,
+        y: y
+    };
+    this.r =  Math.random()*5 + 4;
+    this.vx = (Math.random()-0.5)*20;
+    this.vy = (Math.random()-0.5)*20;
+    this.accX = 0;
+    this.accY = 0;
+    this.friction = Math.random()*0.05 + 0.94;
+
+    this.color = colors[Math.floor(Math.random()*6)];
     }
 
+    Particle.prototype.render = function() {
 
-</style>
+
+    this.accX = (this.dest.x - this.x)/1000;
+    this.accY = (this.dest.y - this.y)/1000;
+    this.vx += this.accX;
+    this.vy += this.accY;
+    this.vx *= this.friction;
+    this.vy *= this.friction;
+
+    this.x += this.vx;
+    this.y +=  this.vy;
+
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+    ctx.fill();
+
+    var a = this.x - mouse.x;
+    var b = this.y - mouse.y;
+
+    var distance = Math.sqrt( a*a + b*b );
+        if(distance<(radius*70)){
+            this.accX = (this.x - mouse.x)/100;
+            this.accY = (this.y - mouse.y)/100;
+            this.vx += this.accX;
+            this.vy += this.accY;
+        }
+
+    }
+
+    function onMouseMove(e){
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    }
+
+    function onTouchMove(e){
+        if(e.touches.length > 0 ){
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        }
+        }
+
+        function onTouchEnd(e){
+        mouse.x = -9999;
+        mouse.y = -9999;
+    }
+
+    function initScene(){
+        ww = canvas.width = 2000;
+        wh = canvas.height = 300;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = "bold "+(ww/10)+"px sans-serif";
+        
+        ctx.textAlign = "center";
+        ctx.fillText("K h o j", ww/2, wh/2);
+
+        var data  = ctx.getImageData(0, 0, ww, wh).data;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = "screen";
+
+        particles = [];
+        for(var i=0;i<ww;i+=Math.round(ww/150)){
+            for(var j=0;j<wh;j+=Math.round(ww/150)){
+            if(data[ ((i + j*ww)*4) + 3] > 150){
+                particles.push(new Particle(i,j));
+            }
+            }
+        }
+        amount = particles.length;
+
+    }
+
+    function onMouseClick(){
+        radius++;
+        if(radius ===5){
+            radius = 0;
+        }
+    }
+
+    function render(a) {
+    requestAnimationFrame(render);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < amount; i++) {
+        particles[i].render();
+    }
+    };
+
+    function handleEventListeners() {
+        if (window.innerWidth <= 650) {
+            initScene();
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("touchmove", onTouchMove);
+            window.removeEventListener("click", onMouseClick);
+            window.removeEventListener("touchend", onTouchEnd);
+        } else {
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("touchmove", onTouchMove);
+            window.addEventListener("click", onMouseClick);
+            window.addEventListener("touchend", onTouchEnd);
+        }
+    }
+
+    initScene();
+    handleEventListeners();
+    requestAnimationFrame(render);
+
+    window.addEventListener('resize', handleEventListeners);
+</script>
