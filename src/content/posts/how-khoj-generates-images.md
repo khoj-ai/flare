@@ -1,5 +1,5 @@
 ---
-title: "How Khoj Generates Personalized Images"
+title: "How We Generate Personalized Images"
 author: saba
 description: Khoj offers a unique approach to generating images that are personalized to the user's preferences and context. 
 tldr: "Khoj personalizes content creation, particularly images, by using a Retrieval Augmented Generation (RAG) system. It enhances the interaction with large language models (LLMs) by incorporating your personal data, internet-sourced information, and cultural context to produce images that are meaningful and relevant to you."
