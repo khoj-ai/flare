@@ -63,7 +63,7 @@ const options: any = background_config
         justify-content:center;
         align-items: center;
         position: relative;
-        padding-top: 270px;
+        padding-top: 240px;
     }
     #content{
         position: relative;
@@ -80,6 +80,18 @@ const options: any = background_config
         display: flex;
         flex-direction: column;
         align-items: left;
+    }
+    @media (max-width: 550px) {
+        main {
+            padding-top: 100px;
+        }
+    }
+
+    /* Media query for screen widths above 550px */
+    @media (min-width: 551px) {
+        main {
+            padding-top: 240px;
+        }
     }
 </style>
 <script>
