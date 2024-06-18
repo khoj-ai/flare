@@ -517,8 +517,7 @@ export const background_config = {
   responsive: [],
   smooth: false,
   style: {
-    // position: "absolute",
-    width: "100vw",
+    position: "absolute",
     height: "100vh",
   },
   themes: [],
