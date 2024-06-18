@@ -5,9 +5,8 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION} from '../consts';
 import {background_config} from '../consts'
 import Particles from "astro-particles";
-import type { ISourceOptions } from "tsparticles-engine";
 
-const options: ISourceOptions = background_config
+const options: any = background_config
 
 ---
 
@@ -17,13 +16,13 @@ const options: ISourceOptions = background_config
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <script>
-            import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+            import { type Engine } from "tsparticles-engine";
             import { loadFull } from "tsparticles";
 
             window.particlesInit = async function (engine: Engine) {
                 await loadFull(engine);
             }
-            window.particlesLoaded = function (container: Container) {
+            window.particlesLoaded = function () {
                 console.log("particlesLoaded callback");
             }
         </script>
@@ -85,7 +84,6 @@ const options: ISourceOptions = background_config
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        console.log(1)
         const rootStyles = getComputedStyle(document.documentElement);
         const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
         const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
@@ -97,9 +95,9 @@ const options: ISourceOptions = background_config
         }
     });
 
-    var canvas = document.querySelector("#scene"),
-    ctx = canvas.getContext("2d"),
-    particles = [],
+    var canvas = document.querySelector("#scene") as HTMLCanvasElement,
+    ctx = canvas.getContext("2d")!,
+    particles: any = [],
     amount = 0,
     mouse = {x:0,y:0},
     radius = 0.2;
@@ -117,67 +115,75 @@ const options: ISourceOptions = background_config
     var ww = canvas.width = 100;
     var wh = canvas.height = 100;
 
-    function Particle(x,y){
-    this.x =  Math.random()*ww;
-    this.y =  Math.random()*wh;
-    this.dest = {
-        x : x,
-        y: y
-    };
-    this.r =  Math.random()*5 + 4;
-    this.vx = (Math.random()-0.5)*20;
-    this.vy = (Math.random()-0.5)*20;
-    this.accX = 0;
-    this.accY = 0;
-    this.friction = Math.random()*0.05 + 0.94;
+    class Particle {
+        x: number;
+        y: number;
+        dest: { x: number, y: number };
+        r: number;
+        vx: number;
+        vy: number;
+        accX: number;
+        accY: number;   
+        friction: number;
+        color: string;
 
-    this.color = colors[Math.floor(Math.random()*6)];
-    }
-
-    Particle.prototype.render = function() {
-
-
-    this.accX = (this.dest.x - this.x)/1000;
-    this.accY = (this.dest.y - this.y)/1000;
-    this.vx += this.accX;
-    this.vy += this.accY;
-    this.vx *= this.friction;
-    this.vy *= this.friction;
-
-    this.x += this.vx;
-    this.y +=  this.vy;
-
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
-    ctx.fill();
-
-    var a = this.x - mouse.x;
-    var b = this.y - mouse.y;
-
-    var distance = Math.sqrt( a*a + b*b );
-        if(distance<(radius*70)){
-            this.accX = (this.x - mouse.x)/100;
-            this.accY = (this.y - mouse.y)/100;
-            this.vx += this.accX;
-            this.vy += this.accY;
+        constructor(x: number, y: number) {
+            this.x = Math.random() * ww;
+            this.y = Math.random() * wh;
+            this.dest = { x, y };
+            this.r = Math.random() * 5 + 4;
+            this.vx = (Math.random() - 0.5) * 20;
+            this.vy = (Math.random() - 0.5) * 20;
+            this.accX = 0;
+            this.accY = 0;
+            this.friction = Math.random() * 0.05 + 0.94;
+            this.color = colors[Math.floor(Math.random() * 5)];
         }
 
+        render() {
+            if (!ctx) return;
+            this.accX = (this.dest.x - this.x) / 1000;
+            this.accY = (this.dest.y - this.y) / 1000;
+            this.vx += this.accX;
+            this.vy += this.accY;
+            this.vx *= this.friction;
+            this.vy *= this.friction;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, Math.PI * 2, 0);
+            ctx.fill();
+
+            var a = this.x - mouse.x;
+            var b = this.y - mouse.y;
+
+            var distance = Math.sqrt(a * a + b * b);
+            if (distance < (radius * 70)) {
+                this.accX = (this.x - mouse.x) / 100;
+                this.accY = (this.y - mouse.y) / 100;
+                this.vx += this.accX;
+                this.vy += this.accY;
+            }
+        }
     }
 
-    function onMouseMove(e){
+
+    function onMouseMove(e : MouseEvent){
         mouse.x = e.clientX;
         mouse.y = e.clientY;
     }
 
-    function onTouchMove(e){
+    function onTouchMove(e:TouchEvent){
         if(e.touches.length > 0 ){
             mouse.x = e.touches[0].clientX;
             mouse.y = e.touches[0].clientY;
         }
-        }
+    }
 
-        function onTouchEnd(e){
+    function onTouchEnd(){
         mouse.x = -9999;
         mouse.y = -9999;
     }
@@ -197,7 +203,7 @@ const options: ISourceOptions = background_config
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.globalCompositeOperation = "screen";
 
-        particles = [];
+        particles= [];
         for(var i=0;i<ww;i+=Math.round(ww/150)){
             for(var j=0;j<wh;j+=Math.round(ww/150)){
             if(data[ ((i + j*ww)*4) + 3] > 150){
@@ -216,12 +222,12 @@ const options: ISourceOptions = background_config
         }
     }
 
-    function render(a) {
-    requestAnimationFrame(render);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < amount; i++) {
-        particles[i].render();
-    }
+    function render() {
+        requestAnimationFrame(render);
+        ctx.clearRect(0, 0, canvas?.width, canvas?.height);
+        for (var i = 0; i < amount; i++) {
+            particles[i].render();
+        }
     };
 
     function handleEventListeners() {
