@@ -53,44 +53,70 @@ const options: any = background_config
     </body>
 </html>
 <style>
-    body{
+    body {
         position: relative;
         overflow: hidden;
+        margin: 0;
+        padding: 0;
     }
-     main {
+    main {
         display: flex;
         flex-direction: column;
-        justify-content:center;
+        justify-content: center;
         align-items: center;
         position: relative;
         padding-top: 240px;
     }
-    #content{
+    #content {
         position: relative;
-        margin-bottom:-120px;
+        margin-bottom: -120px;
     } 
-    #scene{
-        z-index:10;
+    #scene {
+        z-index: 10;
         position: absolute;
-        top:50px;
+        top: 50px;
         width: 150%;
         max-width: 2000px;
     }
-    #text{
+    #text {
         display: flex;
         flex-direction: column;
         align-items: left;
     }
-    @media (max-width: 550px) {
+    footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background-color: #f1f1f1;
+    }
+    @media (max-width: 650px) {
         main {
-            padding-top: 100px;
+            padding-top: 10px;
+        }
+        #tsparticles,
+        #scene {
+            display: none;
         }
     }
 
-    /* Media query for screen widths above 550px */
-    @media (min-width: 551px) {
+    @media (min-width: 651px) {
         main {
             padding-top: 240px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        main {
+            padding-top: 20px;
+        }
+        #text p {
+            font-size: 14px;
+        }
+        footer {
+            padding: 5px 0;
+            font-size: 5px;
         }
     }
 </style>
