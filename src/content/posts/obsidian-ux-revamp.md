@@ -7,7 +7,7 @@ heroImage: /two_phase_forest.png
 pubDate: 2024-06-19
 ---
 
-# The Khoj AI assistant got a significant boost in Obsidian
+# Khoj AI in Obsidian
 
 Khoj with Obsidian is a major leveling up of your second brain. You can see the full instructions of how to install it [here](https://docs.khoj.dev/clients/obsidian/#setup). 
 
