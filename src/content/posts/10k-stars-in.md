@@ -15,24 +15,22 @@ The journey with Khoj has been an enlightening roller-coaster. Back in 2021, we 
 
 Here's the ride we've been on so far:
 
-1. We built a local document, image AI search engine for [Emacs](https://www.gnu.org/software/emacs/) users. Created ability to chat with GPT, even about your notes, back [in 2021](https://github.com/khoj-ai/khoj/commit/0ac1e5f372dbe6baf16f1b0c3d4df1bf5da5efdb) [^1]. Did decently well on r/OrgMode. Missed being ChatGPT 🫠
-2. Our hobby project to create an open-source, personal AI called Khoj, with 300 GitHub stars, landed us [a spot](https://www.ycombinator.com/companies/khoj) in [YCombinator](https://ycombinator.com) for the summer of '23.
+1. We built a local document, image AI search engine for [Emacs](https://www.gnu.org/software/emacs/) users. Created the ability to chat with GPT, even about your notes, back [in 2021](https://github.com/khoj-ai/khoj/commit/0ac1e5f372dbe6baf16f1b0c3d4df1bf5da5efdb) [^1]. Did decently well on r/OrgMode. Missed being ChatGPT 🫠
+2. Debanjum started working on Khoj full-time in the summer of '22. Our passion project to create an open-source, personal AI called Khoj, reached 300 GitHub stars. We landed [a spot](https://www.ycombinator.com/companies/khoj) in [YCombinator](https://ycombinator.com) for the summer of '23.
 3. Someone hard-launched us on to the front page of HackerNews in July '23 but we [got roasted](https://news.ycombinator.com/item?id=36641542) for being mere chatgpt wrappers 🥶 and not being open source enough 🙄.
 4. We did a [ShowHN](https://news.ycombinator.com/item?id=36933452) of our new local chat with your docs experience. It got us on the front page of HN, this time with positive vibes.
 5. We wanted AI to close, not widen, the accessibility gap, so we worked with Meta to integrate our personal AI into [WhatsApp](https://www.ycombinator.com/launches/JG4-khoj-your-superhuman-companion).
-6. In November, we launched a beta version of the Khoj [cloud service](https://app.khoj.dev)! This allowed folks to use Khoj, even if they didn't have powerful GPUs.
+6. In November, I rearchitected Khoj to allow it to scale from a single user, self-hosted experience to a multi-user, cloud service[^2]. We launched the Khoj [cloud service](https://app.khoj.dev)!
 7. Over the next few months we iterated based on user feedback, to turn Khoj into a capable AI agent. It now had the ability to research online, paint images, take on specialized [personas](https://app.khoj.dev/agents) and perform tasks [autonomously](https://app.khoj.dev/automations) on your behalf.
 8. Performance was spotty, so we migrated from EC2 to ECS for smoother scaling.
-9. [Some](https://www.youtube.com/watch?v=Lnx2K4TOnC4) [delightful](https://www.youtube.com/watch?v=10DUZA4KEvg) YouTube/[Twitter](https://x.com/tuturetom/status/1792877330571944078) posts made us go trending at #1 on Github. We scrambled to handle the big traffic spike. That earlier ECS migration became a massive lifesaver. Our UX still looked like it was straight out of a cartoon.
-10. We hired our first teammate, [Raghav](https://www.linkedin.com/in/raghavtirumale/), who's hit the grounding *sprinting* for the summer.
-
-[^1]: There was no UX, just an experimental API for an intrepid explorer to discover
-
+9. [Some](https://www.youtube.com/watch?v=Lnx2K4TOnC4) [delightful](https://www.youtube.com/watch?v=10DUZA4KEvg) YouTube/[Twitter](https://x.com/tuturetom/status/1792877330571944078) posts made us go trending at #1 on Github. We scrambled to handle the big traffic spike. That earlier ECS migration became a massive lifesaver. Khoj crossed 10K stars. And our UX continued to looked like it was straight out of a cartoon.
+10. We hired our first teammate, [Raghav](https://www.linkedin.com/in/raghavtirumale/), for the summer, who's hit the grounding *sprinting* 🏃🏽‍♂️‍➡️
 
 That brings us to today! Cool, so what did we learn?
+
 ### Building an Open Source AI Company
 
-The dynamics of building an open-source company are quite different from closed-source companies. A lot of our early users are hackers and developers. This makes Khoj development more collaborative and transparent with less effort. It means the community can find vulnerabilities, test capabilities, report issues and contribute fixes earlier and faster. It means they can just jump in, get their hands dirty, and solve their problems without our assistance. **It means Khoj can get aligned to human faster and stay aligned with them for longer.**
+The dynamics of building an open-source AI company are quite different from closed-source companies. A lot of our early users are hackers and developers. This makes Khoj development more collaborative and transparent with less effort. It means the community can find vulnerabilities, test capabilities, report issues and contribute fixes earlier and faster. It means they can just jump in, get their hands dirty, and solve their problems without our assistance. **It means Khoj can get aligned to humans faster and stay aligned with them for longer.**
 
 As maintainers of the repository, we need to do a better job of making it super easy for developers to help themselves. Documentation should be tight, complete. If someone asks you a question, answer it, and add the answer to your documentation right away. Your documentation should be really easily searchable ([Algolia + Docusaurus is GOAT](https://docusaurus.io/docs/search#using-algolia-docsearch)). You should flag good first issues for getting new contributors started with less effort.
 
@@ -49,7 +47,11 @@ The last year has been really eventful, full of learnings and adaptations. **Big
 Through all this, we've also picked on a few pieces of conviction about AI:
 
 - AI will fundamentally shift how we understand and access information. We need to carefully design our AI interfaces to ensure this shift improves our capabilities.
-- We need our personal AI to be aligned to us. Open-source AI is much easier to keep aligned to individual human interests. It is important to minimize chances of misalignment wherever possible. Even if the creators rotate and swap out, people should be able to take ownersip of the service and ensure service/user alignment.
-- Communication will get easier for people across languages, personas and mediums.
+- Open-source AI is much faster and easier to keep aligned to individual human interests. We need our personal AI to be aligned to us and minimize chances of misalignment wherever possible. Even if the creators change, people should be able to take ownership of the service and ensure service/user alignment.
+- Communication will get easier for people across languages, personas and mediums. But we need to ensure our communication channels do not get flooded with reality warping noise generated by AIs and humans.
 
 **How we construct these new machines over these next few years will decide if AI improves the human condition. That is our north star. That is what we continue to innovate towards.**
+
+### Footnotes
+[^1]: There was no UX, just an experimental API for an intrepid explorer to discover
+[^2]: This allowed folks to use Khoj from any device, even if they didn't have powerful GPUs. While folks with powerful machines could continue to self-host their Khoj privately.
