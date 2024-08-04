@@ -8,7 +8,7 @@ pubDate: 2024-03-09
 keywords: ["images", "personalization", "RAG", "AI"]
 ---
 
-## What Khoj Can Do
+## Creating personalized, context-aware images
 
 Large language models (LLMs) lack the ability to understand who you are when you first use them. This results in outputs that are broad and impersonal, requiring you to spend time customizing them to fit your needs. With Khoj, we address this shortcoming by leveraging the retrieval augmented generation (RAG) to personalize content, especially images, based on your shared data. RAG is necessary because context windows to LLMs are still limited, hence information shared with a model should be optimized.
 
