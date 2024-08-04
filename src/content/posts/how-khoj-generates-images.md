@@ -5,6 +5,7 @@ description: Khoj offers a unique approach to generating images that are persona
 tldr: "Khoj personalizes content creation, particularly images, by using a Retrieval Augmented Generation (RAG) system. It enhances the interaction with large language models (LLMs) by incorporating your personal data, internet-sourced information, and cultural context to produce images that are meaningful and relevant to you."
 heroImage: /pacific_coast_highway.png
 pubDate: 2024-03-09
+keywords: ["images", "personalization", "RAG", "AI"]
 ---
 
 ## What Khoj Can Do

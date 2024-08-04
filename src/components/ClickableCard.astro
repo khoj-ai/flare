@@ -7,32 +7,16 @@ interface Props {
 const { title, link } = Astro.props;
 ---
 
-<div>
-    <a href={link}>
-        <p>{title}</p>
+<div class="rounded-lg p-4 m-1 bg-gradient-to-r from-purple-50 to-purple-100">
+    <a href={link} class="text-lg">
+       {title}
     </a>
 </div>
 
 <style>
-    div {
-        border-radius: 12px;
-        padding: 10px;
-        margin: 10px;
-        background: linear-gradient(45deg, var(--accent), #9198e5);
-    }
-
-    div:hover {
-        background: linear-gradient(45deg, #9198e5, var(--accent));
-    }
-
     a {
         text-decoration: none;
         color: white;
-    }
-
-    p {
-        font-size: x-large;
-        margin: 0;
     }
 
     /* If the system is in dark mode, use the light mode color */

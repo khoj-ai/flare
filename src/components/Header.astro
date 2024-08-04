@@ -1,12 +1,11 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import ThemeIcon from './ThemeIcon.astro';
-import { SITE_TITLE } from '../consts';
 ---
 
 <header>
 	<nav>
-		<h2 class="header-parent"><a href="https://khoj.dev"><img class="header-icon" src="/favicon-128x128.ico">{SITE_TITLE}</img></a></h2>
+		<h2 class="header-parent"><a href="https://khoj.dev"><img class="header-icon" src="/icons/logo_type.svg"></img></a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/posts">Blog</HeaderLink>
@@ -41,8 +40,8 @@ import { SITE_TITLE } from '../consts';
 	}
 	
 	img.header-icon {
-		width: 32px;
-		height: 32px;
+		width: 52px;
+		height: 52px;
 	}
 
 	header {

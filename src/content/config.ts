@@ -12,6 +12,7 @@ const posts = defineCollection({
 		heroImage: z.string().optional(),
 		tldr: z.string().optional(),
 		author: z.string(),
+		keywords: z.array(z.string()).optional(),
 	}),
 });
 

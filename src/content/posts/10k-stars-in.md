@@ -5,6 +5,7 @@ description: Reflecting back on the last few years of building Khoj, how we got 
 tldr: "The article chronicles the evolution of Khoj from a personal search engine to a cloud-scale personal AI with ability to paint, research online, provide specialized personas & run autonomously. It emphasizing key lessons learned in building an open-source company like prioritizing community engagement and iterative development to build human aligned AI."
 heroImage: /blue_wave.png
 pubDate: 2024-06-17
+keywords: ["personal AI", "open-source", "community engagement"]
 ---
 ## The Khoj Journey So Far
 
@@ -17,13 +18,13 @@ Here's the ride we've been on so far:
 
 1. We built a local document, image AI search engine for [Emacs](https://www.gnu.org/software/emacs/) users. Created the ability to chat with GPT, even about your notes, back [in 2021](https://github.com/khoj-ai/khoj/commit/0ac1e5f372dbe6baf16f1b0c3d4df1bf5da5efdb) [^1]. Did decently well on r/OrgMode. Missed being ChatGPT 🫠
 2. Debanjum started working on Khoj full-time in the summer of '22. Our passion project to create an open-source, personal AI called Khoj, reached 300 GitHub stars. We landed [a spot](https://www.ycombinator.com/companies/khoj) in [YCombinator](https://ycombinator.com) for the summer of '23.
-3. Someone hard-launched us on to the front page of HackerNews in July '23 but we [got roasted](https://news.ycombinator.com/item?id=36641542) for being mere chatgpt wrappers 🥶 and not being open source enough 🙄.
+3. Someone hard-launched us on to the front page of HackerNews in July '23 but we [got roasted](https://news.ycombinator.com/item?id=36641542) for being mere chatgpt wrappers and not being open source enough.
 4. We did a [ShowHN](https://news.ycombinator.com/item?id=36933452) of our new local chat with your docs experience. It got us on the front page of HN, this time with positive vibes.
-5. We wanted AI to close, not widen, the accessibility gap, so we worked with Meta to integrate our personal AI into [WhatsApp](https://www.ycombinator.com/launches/JG4-khoj-your-superhuman-companion).
+5. On the impulse of closing the accessibility gap, we worked with Meta to integrate our personal AI into [WhatsApp](https://www.ycombinator.com/launches/JG4-khoj-your-superhuman-companion).
 6. In November, I rearchitected Khoj to allow it to scale from a single user, self-hosted experience to a multi-user, cloud service[^2]. We launched the Khoj [cloud service](https://app.khoj.dev)!
 7. Over the next few months we iterated based on user feedback, to turn Khoj into a capable AI agent. It now had the ability to research online, paint images, take on specialized [personas](https://app.khoj.dev/agents) and perform tasks [autonomously](https://app.khoj.dev/automations) on your behalf.
 8. Performance was spotty, so we migrated from EC2 to ECS for smoother scaling.
-9. [Some](https://www.youtube.com/watch?v=Lnx2K4TOnC4) [delightful](https://www.youtube.com/watch?v=10DUZA4KEvg) YouTube/[Twitter](https://x.com/tuturetom/status/1792877330571944078) posts made us go trending at #1 on Github. We scrambled to handle the big traffic spike. That earlier ECS migration became a massive lifesaver. Khoj crossed 10K stars. And our UX continued to looked like it was straight out of a cartoon.
+9. [Some](https://www.youtube.com/watch?v=Lnx2K4TOnC4) [delightful](https://www.youtube.com/watch?v=10DUZA4KEvg) YouTube/[Twitter](https://x.com/tuturetom/status/1792877330571944078) posts made us go trending at #1 on Github. We scrambled to handle the big traffic spike. That earlier ECS migration became a massive lifesaver. Khoj crossed 10K stars. And our UX continued to look like it was straight out of a cartoon.
 10. We hired our first teammate, [Raghav](https://www.linkedin.com/in/raghavtirumale/), for the summer, who's hit the grounding *sprinting* 🏃🏽‍♂️‍➡️
 
 That brings us to today! Cool, so what did we learn?

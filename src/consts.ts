@@ -210,7 +210,7 @@ export const background_config = {
       }
     },
     color: {
-      value:["#468966","#FFF0A5", "#FFB03B","#B64926", "#8E2800"],
+      value:["#987DA5","#6F9954", "#94A1AA","#C28951", "#827C6A"],
       animation: {
         h: {
           count: 0,

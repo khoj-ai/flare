@@ -14,10 +14,12 @@
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
+    "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.4.8",
     "astro-particles": "^2.10.0",
-    "typescript": "^5.3.3",
+    "tailwindcss": "^3.4.7",
     "tsparticles": "2.12",
-    "tsparticles-engine": "^2.12.0"
+    "tsparticles-engine": "^2.12.0",
+    "typescript": "^5.3.3"
   }
 }

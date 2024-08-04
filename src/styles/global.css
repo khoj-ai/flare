@@ -3,22 +3,22 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
  
 :root {
-    --accent: #0257b3; /* Bright Blue */
-    --accent-dark: #0056b3; /* Darker Blue */
-	--title-color: #3f51b5; /* A mysterious blue */
-    --black: 0, 0, 0; /* Pure Black */
-    --gray: 128, 128, 128; /* Medium Gray */
-    --gray-light: 211, 211, 211; /* Light Gray */
-    --gray-dark: 64, 64, 64; /* Dark Gray */
+    --accent: #111011;
+	--title-color:  #6F9954;
+    --black: 0, 0, 0;
+    --gray: 128, 128, 128;
+    --gray-light: 211, 211, 211;
+    --gray-dark: 64, 64, 64;
     --gray-gradient: rgba(var(--gray-light), 50%), #fff;
     --box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
         0 16px 32px rgba(var(--gray), 33%);
-	--background-color-light: #F9F5DE;
+	--background-color-light: #EAE8E1;
 	--background-color-dark: #222127;
-	--color1: #468966;
+	--color1: #FAE4D0;
 	--color2: #FFF0A5;
 	--color3: #FFB03B;
 	--color4: #B64926;
@@ -27,27 +27,26 @@
 
 /* Dark mode */
 :root.dark {
-    --accent: #a4e9f6; /* Slightly Desaturated Blue */
-    --accent-dark: #0a58ca; /* Darker Desaturated Blue */
-	--title-color: #00B8D9; /* Cyan */
-    --black: 255, 255, 255; /* Pure White for dark mode */
-    --gray: 169, 169, 169; /* Dark Gray */
-    --gray-light: 105, 105, 105; /* Darker Gray */
-    --gray-dark: 47, 79, 79; /* Even Darker Gray */
+    --accent: #F4F2EF;
+	--title-color: #cef3bb;
+    --black: 255, 255, 255;
+    --gray: 169, 169, 169;
+    --gray-light: 105, 105, 105;
+    --gray-dark: 47, 79, 79;
     --gray-gradient: rgba(var(--gray-light), 50%), #000;
     --box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
         0 16px 32px rgba(var(--gray), 33%);
 }
 
 @font-face {
-	font-family: 'Tajawal';
+    font-family: "Noto Sans", "Noto Sans Arabic", sans-serif !important;
 	src: url(https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1nzGBC5xLhLE.woff2) format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 body {
-	font-family: 'Tajawal', sans-serif;
+	font-family: "Noto Sans", "Noto Sans Arabic", sans-serif !important;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -94,10 +93,10 @@ b {
 	font-weight: 700;
 }
 a {
-	color: var(--accent);
+	color: var(--title-color);
 }
 a:hover {
-	color: var(--accent);
+	color: var(--title-color);
 }
 p {
 	margin-bottom: 1em;
@@ -147,6 +146,26 @@ details {
 	border-radius: 8px;
 	padding: 1em;
 	margin: 1em 0;
+}
+
+ol {
+	padding-left: 1em;
+	margin: 1em 0;
+}
+
+ol li {
+	margin-bottom: 0.5em;
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+
+ul {
+	padding-left: 1em;
+	margin: 1em 0;
+}
+
+ul li {
+	list-style-type: disc;
 }
 
 html.dark {
