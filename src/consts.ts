@@ -27,6 +27,13 @@ export const AUTHOR_METADATA = {
         twitter: "https://twitter.com/khoj_ai",
         github: "https://github.com/khoj-ai",
     },
+    raghav: {
+        name: "Raghav Tirumale",
+        bio: "Raghav is an electrical and computer engineering student at UIUC and intern for Khoj",
+        avatar: "https://avatars.githubusercontent.com/u/62105787?v=4",
+        twitter: "",
+        github: "https://github.com/MythicalCow",
+    }
 };
 
 
