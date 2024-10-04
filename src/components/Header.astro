@@ -1,5 +1,6 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
+import { Icon } from 'astro-icon/components'
 ---
 
 <header>
@@ -13,12 +14,7 @@ import ThemeIcon from './ThemeIcon.astro';
 		<div class="social-links">
 			<a href="https://twitter.com/khoj_ai" target="_blank">
 				<span class="sr-only">Follow Khoj on Twitter</span>
-				<img
-					class="share-button"
-					src="/icons/twitter.svg"
-					width={24}
-					height={24}
-				/>
+				<Icon name="ph:twitter-logo" size={24} />
 			</a>
 			<a href="https://github.com/khoj-ai/khoj" target="_blank">
 				<span class="sr-only">Follow Khoj Development on GitHub</span>
