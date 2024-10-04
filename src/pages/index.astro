@@ -1,291 +1,62 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION} from '../consts';
-import {background_config} from '../consts'
-import Particles from "astro-particles";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
 
-const options: any = background_config
-
+const posts = (await getCollection("posts")).sort(
+	(b, a) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <script>
-            import { type Engine } from "tsparticles-engine";
-            import { loadFull } from "tsparticles";
-
-            window.particlesInit = async function (engine: Engine) {
-                await loadFull(engine);
-            }
-            window.particlesLoaded = function () {
-                console.log("particlesLoaded callback");
-            }
-        </script>
-    </head>
-    <body>
-        <Header />
-        <div id="content">
-            <main>
-                <canvas id="scene"></canvas>
-
-                <div id="text">
-                    <p>
-                        Welcome to the official Khoj blog. We'll document our thoughts here about personal AI, product development, and the future of work.
-                    </p>
-                    <p>
-                        Start experimenting with your own personal AI at <a href="https://khoj.dev">khoj.dev</a>.
-                    </p>
-                    <p>We're making core consumer AI applications to ensure the future of digital services is trustworthy, transparent, and deeply useful. The world is going to change a lot in the coming decade, and we want to make this shift happen responsibly and delightfully.</p>
-                    <p>Find our documentation at <a href="https://docs.khoj.dev">docs.khoj.dev</a>.</p>
-                    <p>
-                        If you want to reach out, give feedback, or have a question, <a href="https://discord.gg/BDgyabRM6e">join us on Discord</a> or consult us on <a href="https://github.com/khoj-ai/khoj/issues/">GitHub</a>.
-                    </p>
-                </div>
-            </main>
-            <Particles id="tsparticles" options={options} init="particlesInit" />
-        </div>
-        <Footer />
-    </body>
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<style>
+			main {
+				width: 960px;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<div class="grid grid-cols-1 gap-4">
+					{
+						posts.map((post) => (
+							<a
+								href={`/posts/${post.slug}/`}
+								class="p-4rounded-lg flex flex-col md:flex-row gap-4 hover:bg-slate-200 dark:hover:bg-slate-800"
+							>
+								<img
+									class="rounded-lg w-full md:w-48 h-48 md:h-full object-cover"
+									src={post.data.heroImage}
+									alt=""
+								/>
+								<div>
+									<h4 class="mt-2 text-slate-800 dark:text-slate-200">
+										{post.data.title}
+									</h4>
+									<p class="dark:text-slate-50 text-slate-900 text-sm">
+										<FormattedDate
+											date={post.data.pubDate}
+										/>
+									</p>
+									<p class="excerpt text-slate-800 dark:text-slate-200">
+										{post.data.description}
+									</p>
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
 </html>
-<style>
-    body {
-        position: relative;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
-    main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        padding-top: 240px;
-    }
-    #content {
-        position: relative;
-        margin-bottom: -120px;
-    } 
-    #scene {
-        z-index: 10;
-        position: absolute;
-        top: 50px;
-        width: 150%;
-        max-width: 2000px;
-    }
-    #text {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-    }
-    footer {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        padding: 10px 0;
-        text-align: center;
-        background-color: #f1f1f1;
-    }
-    @media (max-width: 650px) {
-        main {
-            padding-top: 10px;
-        }
-        #tsparticles,
-        #scene {
-            display: none;
-        }
-    }
-
-    @media (min-width: 651px) {
-        main {
-            padding-top: 240px;
-        }
-    }
-
-    @media (max-width: 375px) {
-        main {
-            padding-top: 20px;
-        }
-        #text p {
-            font-size: 14px;
-        }
-        footer {
-            padding: 5px 0;
-            font-size: 5px;
-        }
-    }
-</style>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const rootStyles = getComputedStyle(document.documentElement);
-        const lightBackgroundColor = rootStyles.getPropertyValue('--background-color-light').trim();
-        const darkBackgroundColor = rootStyles.getPropertyValue('--background-color-dark').trim();
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-            document.body.style.backgroundColor = darkBackgroundColor;
-        } else {
-            document.body.style.backgroundColor = lightBackgroundColor;
-        }
-    });
-
-    var canvas = document.querySelector("#scene") as HTMLCanvasElement,
-    ctx = canvas.getContext("2d")!,
-    particles: any = [],
-    amount = 0,
-    mouse = {x:0,y:0},
-    radius = 0.2;
-
-    const rootStyles = getComputedStyle(document.documentElement);
-    const colors = [
-        rootStyles.getPropertyValue('--color1').trim(),
-        rootStyles.getPropertyValue('--color2').trim(),
-        rootStyles.getPropertyValue('--color3').trim(),
-        rootStyles.getPropertyValue('--color4').trim(),
-        rootStyles.getPropertyValue('--color5').trim()
-    ];
-
-    
-    var ww = canvas.width = 100;
-    var wh = canvas.height = 100;
-
-    class Particle {
-        x: number;
-        y: number;
-        dest: { x: number, y: number };
-        r: number;
-        vx: number;
-        vy: number;
-        accX: number;
-        accY: number;   
-        friction: number;
-        color: string;
-
-        constructor(x: number, y: number) {
-            this.x = Math.random() * ww;
-            this.y = Math.random() * wh;
-            this.dest = { x, y };
-            this.r = Math.random() * 5 + 4;
-            this.vx = (Math.random() - 0.5) * 20;
-            this.vy = (Math.random() - 0.5) * 20;
-            this.accX = 0;
-            this.accY = 0;
-            this.friction = Math.random() * 0.05 + 0.94;
-            this.color = colors[Math.floor(Math.random() * 5)];
-        }
-
-        render() {
-            if (!ctx) return;
-            this.accX = (this.dest.x - this.x) / 1000;
-            this.accY = (this.dest.y - this.y) / 1000;
-            this.vx += this.accX;
-            this.vy += this.accY;
-            this.vx *= this.friction;
-            this.vy *= this.friction;
-
-            this.x += this.vx;
-            this.y += this.vy;
-
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.r, Math.PI * 2, 0);
-            ctx.fill();
-
-            var a = this.x - mouse.x;
-            var b = this.y - mouse.y;
-
-            var distance = Math.sqrt(a * a + b * b);
-            if (distance < (radius * 70)) {
-                this.accX = (this.x - mouse.x) / 100;
-                this.accY = (this.y - mouse.y) / 100;
-                this.vx += this.accX;
-                this.vy += this.accY;
-            }
-        }
-    }
-
-
-    function onMouseMove(e : MouseEvent){
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    }
-
-    function onTouchMove(e:TouchEvent){
-        if(e.touches.length > 0 ){
-            mouse.x = e.touches[0].clientX;
-            mouse.y = e.touches[0].clientY;
-        }
-    }
-
-    function onTouchEnd(){
-        mouse.x = -9999;
-        mouse.y = -9999;
-    }
-
-    function initScene(){
-        ww = canvas.width = 2000;
-        wh = canvas.height = 300;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        ctx.font = "bold "+(ww/10)+"px sans-serif";
-        
-        ctx.textAlign = "center";
-        ctx.fillText("K h o j", ww/2, wh/2);
-
-        var data  = ctx.getImageData(0, 0, ww, wh).data;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.globalCompositeOperation = "screen";
-
-        particles= [];
-        for(var i=0;i<ww;i+=Math.round(ww/150)){
-            for(var j=0;j<wh;j+=Math.round(ww/150)){
-            if(data[ ((i + j*ww)*4) + 3] > 150){
-                particles.push(new Particle(i,j));
-            }
-            }
-        }
-        amount = particles.length;
-
-    }
-
-    function onMouseClick(){
-        radius++;
-        if(radius ===5){
-            radius = 0;
-        }
-    }
-
-    function render() {
-        requestAnimationFrame(render);
-        ctx.clearRect(0, 0, canvas?.width, canvas?.height);
-        for (var i = 0; i < amount; i++) {
-            particles[i].render();
-        }
-    };
-
-    function handleEventListeners() {
-        if (window.innerWidth <= 650) {
-            initScene();
-            window.removeEventListener("mousemove", onMouseMove);
-            window.removeEventListener("touchmove", onTouchMove);
-            window.removeEventListener("click", onMouseClick);
-            window.removeEventListener("touchend", onTouchEnd);
-        } else {
-            window.addEventListener("mousemove", onMouseMove);
-            window.addEventListener("touchmove", onTouchMove);
-            window.addEventListener("click", onMouseClick);
-            window.addEventListener("touchend", onTouchEnd);
-        }
-    }
-
-    initScene();
-    handleEventListeners();
-    requestAnimationFrame(render);
-
-    window.addEventListener('resize', handleEventListeners);
-</script>
