@@ -2,7 +2,7 @@
 
 ---
 
-<button id="themeToggle">
+<button id="themeToggle" title="Toggle dark/light mode">
     <svg width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
             class="sun"
@@ -25,17 +25,17 @@
         padding: 0.75em 0.5em 1em;
     }
     .sun {
-        fill: black;
+        fill: transparent;
     }
     .moon {
-        fill: transparent;
+        fill: black;
     }
 
     :global(.dark) .sun {
-        fill: transparent;
+        fill: white;
     }
     :global(.dark) .moon {
-        fill: white;
+        fill: transparent;
     }
 </style>
 

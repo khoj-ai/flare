@@ -4,82 +4,80 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Khoj Inc. All rights reserved.
-	<div class="internal-links">
-		<a href="https://docs.khoj.dev" target="_blank" rel="noopener noreferrer">
-			<Icon name="ph:book-bookmark" size={24} />
-			<span>Docs</span>
-		</a>
-		<a href="https://app.khoj.dev" target="_blank" rel="noopener noreferrer">
-			<img
-				src="/icons/logo.svg"
-				width={24}
-				height={24}
-			/>
-			<span>App</span>
-		</a>
+	<div class="links">
+		<div class="link-group">
+			<a href="https://khoj.dev" target="_blank" rel="noopener noreferrer">
+				<Icon name="ph:house" size={24} />
+				<span>Home</span>
+			</a>
+			<a href="https://docs.khoj.dev" target="_blank" rel="noopener noreferrer">
+				<Icon name="ph:book-bookmark" size={24} />
+				<span>Docs</span>
+			</a>
+			<a href="https://app.khoj.dev" target="_blank" rel="noopener noreferrer">
+				<Icon name="khoj" size={24} />
+				<span>App</span>
+			</a>
+		</div>
+		<div class="link-group">
+			<a href="https://discord.gg/BDgyabRM6e" target="_blank">
+				<Icon name="ph:discord-logo" size={28} />
+				<span>Discord</span>
+			</a>
+			<a href="https://twitter.com/khoj_ai" target="_blank">
+				<Icon name="ph:twitter-logo" size={28} />
+				<span>Twitter</span>
+			</a>
+			<a href="https://www.linkedin.com/company/97838617/" target="_blank">
+				<Icon name="ph:linkedin-logo" size={28} />
+				<span>LinkedIn</span>
+			</a>
+			<a href="https://github.com/khoj-ai/khoj" target="_blank">
+				<Icon name="ph:github-logo" size={28} />
+				<span>GitHub</span>
+			</a>
+		</div>
 	</div>
-	<div class="social-links">
-		<a class="pt-1" href="https://twitter.com/khoj_ai" target="_blank">
-			<span class="sr-only">Follow Khoj on Twitter</span>
-			<Icon name="ph:twitter-logo" size={28} />
-		</a>
-		<a href="https://www.linkedin.com/company/97838617/" target="_blank">
-			<span class="sr-only">Follow Khoj on LinkedIn</span>
-			<svg width="32" height="32" viewBox="0 0 28 28" fill="currentColor" id="svg-1537900715_1701">
-				<g clip-path="url(#svg-1537900715_1701_clip0_45_27971)">
-					<path d="M24.4829 24.4533H20.9209V18.93C20.9209 17.6129 20.8972 15.9174 19.0683 15.9174C17.2131 15.9174 16.9292 17.3524 16.9292 18.8341V24.453H13.3672V13.0948H16.7867V14.647H16.8346C17.1768 14.0676 17.6713 13.591 18.2655 13.2679C18.8596 12.9448 19.5311 12.7874 20.2085 12.8123C23.8188 12.8123 24.4844 15.1635 24.4844 18.2224L24.4829 24.4533ZM9.34808 11.5422C8.93925 11.5423 8.53957 11.4223 8.1996 11.1975C7.85963 10.9726 7.59465 10.653 7.43813 10.2791C7.28161 9.9051 7.24059 9.49359 7.32028 9.09655C7.39997 8.69951 7.59678 8.33478 7.88581 8.04849C8.17485 7.7622 8.54313 7.56721 8.94409 7.48816C9.34505 7.40912 9.76067 7.44957 10.1384 7.60442C10.5161 7.75926 10.839 8.02154 11.0662 8.35808C11.2934 8.69462 11.4147 9.09031 11.4148 9.49511C11.4148 9.76389 11.3614 10.03 11.2576 10.2784C11.1537 10.5267 11.0015 10.7524 10.8096 10.9425C10.6177 11.1326 10.3899 11.2834 10.1391 11.3863C9.88831 11.4892 9.61954 11.5422 9.34808 11.5422ZM11.1291 24.4533H7.56337V13.0948H11.1291V24.4533ZM26.2587 4.1735H5.77347C5.30851 4.1683 4.86047 4.34609 4.52784 4.66781C4.1952 4.98952 4.00519 5.42883 3.99951 5.8892V26.2568C4.00499 26.7174 4.1949 27.157 4.52752 27.4791C4.86014 27.8011 5.30828 27.9793 5.77347 27.9744H26.2587C26.7248 27.9802 27.1742 27.8025 27.5082 27.4805C27.8421 27.1585 28.0333 26.7183 28.0397 26.2568V5.88773C28.0331 5.42644 27.8418 4.98663 27.5078 4.66493C27.1739 4.34323 26.7246 4.16594 26.2587 4.17203" fill="#111011"></path>
-				</g>
-				<defs>
-					<clipPath id="svg-1537900715_1701_clip0_45_27971">
-						<rect width="28" height="28" fill="currentColor" transform="translate(4 4.08594)"></rect>
-					</clipPath>
-				</defs>
-			</svg>
-		</a>
-		<a class="pt-1" href="https://github.com/khoj-ai/khoj" target="_blank">
-			<span class="sr-only">Follow Khoj Development on GitHub</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28">
-				<path
-					fill="currentColor"
-					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				>
-				</path>
-			</svg>
-		</a>
+	<div class="text-sm sm:pt-1 pt-4">
+		&copy; {today.getFullYear()} Khoj Inc. All rights reserved.
 	</div>
 </footer>
 <style>
 	footer {
+		display: flex;
+		flex-direction: column;
 		text-align: center;
-		padding: 20px;
+		padding: 1em;
+		box-shadow: 0 2px 8px rgba(var(--black), 25%);
 	}
 
-	.internal-links {
+	.links {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1em;
+	}
+	.link-group {
 		display: flex;
 		justify-content: center;
 		gap: 1em;
-		margin-top: 1em;
+		font-size: small;
 	}
-	.internal-links a {
+	.link-group a {
 		display: flex;
+		gap: 0.25em;
 		text-decoration: none;
 		color: rgb(var(--gray));
 		width: auto;
 		align-items: center;
 	}
-
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
+	.link-group a:hover {
 		color: rgb(var(--gray-dark));
+	}
+
+	@media (max-width: 720px) {
+		.links {
+			flex-direction: column;
+		}
 	}
 </style>
