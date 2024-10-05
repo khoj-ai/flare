@@ -1,0 +1,46 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="rounded-lg m-1 shadow-md border border-green-400 text-sm">
+    <pre class="text-wrap"><slot/></pre>
+    <button class="p-2 rounded-lg border border-gray-400" id="copy-button">
+        <span id="copy-success" class="hidden"></span>
+        <Icon name="ph:copy" id="copy-icon" />
+    </button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const copyButton = document.querySelector("#copy-button");
+        const codeBlock = document.querySelector("pre");
+        const copyIcon = document.querySelector("#copy-icon");
+
+        copyButton?.addEventListener("click", () => {
+            navigator.clipboard.writeText(codeBlock?.textContent || '');
+            console.debug("Copied to clipboard: ", codeBlock?.textContent);
+            copyIcon?.classList.add("text-green-400");
+            setTimeout(() => {
+                copyIcon?.classList.remove("text-green-400");
+            }, 1000);
+        });
+    });
+</script>
+<style>
+    div:hover {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* If the system is in dark mode, use the light mode color */
+    @media (prefers-color-scheme: dark) {
+        a {
+            color: white;
+        }
+    }
+</style>
+
