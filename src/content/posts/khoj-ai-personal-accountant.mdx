@@ -1,5 +1,5 @@
 ---
-title: "Khoj - My Personal AI Accountant"
+title: "Khoj as My Personal AI Accountant"
 author: debanjum
 description: Learn how I use Khoj to keep my account synced and maintain an up-to-date view into all my finances.
 tldr: "This post shares my personal workflow to do plaintext accounting using the Khoj app and API. I hope it inspires folks to create advanced, tailored AI workflows and share them to help everyone learn how to use these tools better."
@@ -10,17 +10,15 @@ keywords: ["ai accountant", "plaintext accounting", "workflows"]
 import ClickableChatCard from '../../components/ClickableChatCard.astro';
 
 ## Overview
-I've been maintaining my personal finances using [Beancount](https://github.com/beancount/beancount?tab=readme-ov-file#beancount-double-entry-accounting-from-text-files), a [plaintext accounting](https://plaintextaccounting.org/) tool, for the last decade.
+I've been maintaining my personal finances using a [plaintext accounting](https://plaintextaccounting.org/) tool called [Beancount](https://github.com/beancount/beancount?tab=readme-ov-file#beancount-double-entry-accounting-from-text-files), for the last decade.
 These days [Khoj](https://app.khoj.dev) helps me keep my accounts synced and maintain an up-to-date view into all my finances.
 
-## Bank Statement to Beancount
-I ask Khoj to convert all my transactions from a bank statement PDF into Beancount format. This makes it easy to keep my ledger synced with reality.
+## Bank Statement to my Ledger
+I ask Khoj to convert all my transactions from a bank statement PDF into the appropriate plaintext format. This makes it easy to keep my ledger synced with reality.
 
 Khoj intelligently extracts the transactions from the PDF statement, categorizes expenses into appropriate accounts and formats the information into Beancount format.
 
-The flexibility offered by using AI instead of traditional programming is the best thing about this approach.
-The AI based approach can be easily adapted to work with other Bank accounts, other output formats, handle changes to the PDF statement.
-All it takes to "reprogram" your AI accountant is natural language.
+The flexibility offered by using AI instead of traditional programming is the best thing about this approach. LLMs are super versatile translators. So this approach can be easily adapted to work with other Bank accounts, output formats and changes to the PDF statements. All it takes to "reprogram" your AI accountant is natural language.
 
 ### Process
 1. Download monthly account statements from my bank(s) as PDF
@@ -44,13 +42,13 @@ Give the transactions in a single beancount codeblock
 4. Do a quick scan to compare Khoj extracted transactions to the transactions in the PDF statement.
 5. Copy the extracted transactions, paste it into your ledger and edit any transactions if required
 
-## Transaction SMS to Beancount
+## Transaction SMS to my Ledger
 *Warning: This setup is for **advanced users only**. It requires an Android phone with [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en&gl=US), [Termux](https://wiki.termux.com/wiki/Installing_from_F-Droid) and [Termux:Tasker](https://wiki.termux.com/wiki/Termux:Tasker) setup. A Khoj API key and ability to write single file Python (that interacts with [Khoj via API](https://app.khoj.dev/redoc)).*
 
 Khoj automatically adds all my [UPI](https://en.wikipedia.org/wiki/Unified_Payments_Interface) transactions into my ledger. Using the information in the UPI transaction text message:
 - Khoj converts INR to USD based on today's exchange rate
 - Categorizes the transaction to the most appropriate expense account based on the payee information in the message
-- Compiles the above information into a transaction in the Beancount format
+- Compiles the above information into a transaction in the appropriate text format
 
 ### Implementation
 1. Setup a Tasker profile to trigger on every transaction SMS from your UPI provider. Have it call a simple Python script via Termux.
