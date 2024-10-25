@@ -15,7 +15,6 @@ const {
 	updatedDate,
 	heroImage,
 	author,
-	tldr,
 	keywords,
 } = Astro.props;
 
@@ -60,11 +59,6 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 			}
 			.last-updated-on {
 				font-style: italic;
-			}
-			p.tldr {
-				padding: 1em;
-				box-shadow: var(--box-shadow);
-				border: 1px solid var(--accent);
 			}
 			div.author {
 				display: grid;
@@ -140,20 +134,8 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 								</a>
 							</div>
 						</div>
-						
 						<hr />
 					</div>
-					{
-						tldr && (
-									<span class="rounded-lg text-sm text-green-50 bg-slate-800 dark:bg-slate-400 w-fit py-1 px-2 m-1">
-										TLDR
-									</span>
-									<div class="rounded-lg text-md shadow-sm bg-gradient-to-br from-slate-200 dark:from-slate-800 to-slate-300 dark:to-slate-700  p-2 my-4 text-md">
-										<div class="m-0 p-0 mb-0">{tldr}</div>
-									</div>
-						)
-					}
-					<hr />
 					<slot />
 				</div>
 			</article>

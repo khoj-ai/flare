@@ -2,7 +2,6 @@
 title: "AI Tutors: Hyper-Personalized Education"
 author: saba
 description: There's a massive opportunity to improve the way we learn by leveraging AI to directly cater to student needs.
-tldr: "The post highlights the struggle students face due to a lack of personalized attention in education. It shows how Khoj can be a solution to enhance learning outcomes by providing tailored study assistance. It emphasizes the importance of open-source development and transparency in AI technologies for ethical and effective use in education."
 heroImage: /future_library.png
 pubDate: 2024-03-29
 keywords: ["AI education", "personalized tutoring", "open-source"]

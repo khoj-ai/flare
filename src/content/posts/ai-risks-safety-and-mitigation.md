@@ -2,7 +2,6 @@
 title: "Personal AI must be open-source"
 author: saba
 description: Exploring the necessity of open-source frameworks in the development of personal AI to ensure trust, transparency, and user empowerment.
-tldr: "The article discusses the limitations and concerns of proprietary personal AI services, using Google's AI assistant Gemini as a case study for censorship and bias in AI outputs. It argues for the necessity of open-source AI to ensure transparency, trust, and user control, highlighting Khoj's approach to open-source development as a model for creating ethical and user-empowering personal AI tools."
 heroImage: /futuristic_green_utopia.png
 pubDate: 2024-02-28
 keywords: ["AI", "open-source", "safety", "trust", "personal AI"]

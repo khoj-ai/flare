@@ -2,16 +2,12 @@
 title: "Timely: A Date-Aware Embedding Model"
 author: raghav
 description: Timely is an embedding model that improves temporal reasoning in AI systems. Learn how it was developed and how it can enhance date-aware dataset generation and model fine-tuning.
-tldr: "Khoj introduces Timely, an embedding model designed to enhance temporal reasoning in AI systems by improving the identification and handling of date-related information in queries and documents. The project involves fine-tuning existing embedding models using a diverse dataset of date formats, resulting model variants that demonstrate improved performance on temporal tasks while maintaining general reasoning capabilities."
 heroImage: /rivers.png
 pubDate: 2024-08-14
 keywords: ["embeddings", "date awareness", "temporal"]
 ---
-#### HuggingFace
-Pre-trained models in various sizes are available [here](https://huggingface.co/khoj-ai).
 
 # Timely: An Embedding Model For Temporal Reasoning
-## Introduction
 
 At Khoj, we develop open-source personal AI to simplify how people engage with machines. The RAG component in modern AI systems commonly uses an embedding model to retrieve relevant documents for a user query. This retrieved-context enables accurate and personalized responses. 
 
@@ -198,7 +194,7 @@ Our future focus includes:
 # Reproduce
 
 ## Pretrained Models, Benchmarks, Datasets
-To download our fine-tuned Timely models visit our huggingface page here: [huggingface](https://huggingface.co/khoj-ai)
+To download our fine-tuned Timely models visit our HuggingFace page here: [huggingface](https://huggingface.co/khoj-ai)
 
 ## Dataset Generation
 To replicate dataset generation use the following steps:
@@ -222,6 +218,7 @@ To replicate dataset generation use the following steps:
 ## Benchmarking
 1. Load the desired benchmark and trained model
 2. Run all code blocks in `testing.ipynb`
+
 
 ## Questions
 For any questions or suggestions feel free to contact team@khoj.dev

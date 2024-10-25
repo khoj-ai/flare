@@ -2,7 +2,6 @@
 title: "Springing forward in our web stack"
 author: saba
 description: Khoj recently migrated to Next.js with static site generation, refreshing our front-end and paving the way for future scalability.
-tldr: Khoj transitioned from a bespoke web stack using FastAPI, Django, and plain HTML/CSS/JS to a modern framework with Next.js, Tailwind, and Shadcn. This migration addressed development bottlenecks, improved scalability, and resulted in a significant UI upgrade, demonstrating the importance of evolving technology choices as a product grows.
 heroImage: /abstract_orange_blue_dots.png
 pubDate: 2024-08-07
 keywords: ["front-end", "web stack", "UIUX"]

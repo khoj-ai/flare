@@ -2,7 +2,6 @@
 title: "Extend your Second Brain in Obsidian with AI"
 author: saba
 description: The Khoj AI assistant now lives in the side panel of Obsidian, allowing you to stay in context while augmenting your digital brain.
-tldr: "Khoj AI in Obsidian now features a side panel for seamless in-document assistance and a button for easy text integration, enhancing its compatibility with Obsidian's local-first philosophy and maintaining options for cloud scalability or local-only use."
 heroImage: /two_phase_forest.png
 pubDate: 2024-06-19
 keywords: ["Obsidian", "second brain"]

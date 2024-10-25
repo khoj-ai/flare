@@ -2,10 +2,9 @@
 title: "10000 Stars Later"
 author: saba
 description: Reflecting back on the last few years of building Khoj, how we got here and the lessons we learnt along the way.
-tldr: "The article chronicles the evolution of Khoj from a personal search engine to a cloud-scale personal AI with ability to paint, research online, provide specialized personas & run autonomously. It emphasizing key lessons learned in building an open-source company like prioritizing community engagement and iterative development to build human aligned AI."
 heroImage: /blue_wave.png
 pubDate: 2024-06-17
-keywords: ["personal AI", "open-source", "community engagement"]
+keywords: ["personal AI", "open-source", "community"]
 ---
 ## The Khoj Journey So Far
 
