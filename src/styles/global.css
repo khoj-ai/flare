@@ -127,6 +127,7 @@ code {
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
+	margin-bottom: 12px;
 }
 pre > code {
 	all: unset;
@@ -174,7 +175,6 @@ html.dark {
 }
 
 html.dark code {
-	background-color: #1e1e1e;
 	color: #d4d4d4;
 }
   
