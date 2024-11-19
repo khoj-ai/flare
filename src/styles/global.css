@@ -3,7 +3,7 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
  
 :root {
@@ -39,14 +39,14 @@
 }
 
 @font-face {
-    font-family: "Noto Sans", "Noto Sans Arabic", sans-serif !important;
+    font-family: "Nunito", sans-serif !important;
 	src: url(https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1nzGBC5xLhLE.woff2) format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 body {
-	font-family: "Noto Sans", "Noto Sans Arabic", sans-serif !important;
+	font-family: "Nunito", sans-serif !important;
 	margin: 0;
 	padding: 0;
 	text-align: left;

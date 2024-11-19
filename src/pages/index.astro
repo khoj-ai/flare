@@ -31,10 +31,10 @@ const posts = (await getCollection("posts")).sort(
 						posts.map((post) => (
 							<a
 								href={`/posts/${post.slug}/`}
-								class="p-4rounded-lg flex flex-col md:flex-row gap-4 hover:bg-slate-200 dark:hover:bg-slate-800"
+								class="p-4rounded-lg flex flex-col md:flex-row gap-4 hover:bg-slate-200 dark:hover:bg-slate-800 my-2"
 							>
 								<img
-									class="rounded-lg w-full md:w-48 h-48 md:h-full object-cover"
+									class="rounded-lg w-full md:w-40 h-40 md:h-full object-cover"
 									src={post.data.heroImage}
 									alt=""
 								/>

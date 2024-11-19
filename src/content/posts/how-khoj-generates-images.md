@@ -1,5 +1,5 @@
 ---
-title: "How We Generate Personalized Images"
+title: "How Khoj Generates Personalized AI Images"
 author: saba
 description: Khoj offers a unique approach to generating images that are personalized to the user's preferences and context. 
 heroImage: /pacific_coast_highway.png

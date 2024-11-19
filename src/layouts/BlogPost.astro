@@ -100,7 +100,7 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 							keywords && (
 								<div class="my-3 text-sm inline-grid grid-flow-row md:grid-flow-col">
 									{keywords.map((keyword) => (
-										<span class="rounded-full text-green-50 items-center content-center h-fit dark:bg-slate-400 bg-slate-800 w-fit py-1 px-2 m-1">
+										<span class="rounded-lg text-green-50 items-center content-center h-fit dark:bg-slate-400 bg-slate-800 w-fit py-1 px-1 m-1">
 											{keyword}
 										</span>
 									))}
@@ -140,34 +140,7 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 				</div>
 			</article>
 			<aside>
-				<div class="hero-image">
-					{
-						heroImage && (
-							<img class="hero-image" src={heroImage} alt="" />
-						)
-					}
-				</div>
 				<br />
-				<div class="share-info">
-					<div class="share-title">Share</div>
-					<div class="share-buttons">
-						<a
-							class="share-button"
-							href={`https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(
-								`${Astro.url}`,
-							)}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								class="share-button"
-								src="/icons/twitter.svg"
-								width={32}
-								height={32}
-							/>
-						</a>
-					</div>
-				</div>
 			</aside>
 		</main>
 		<Footer />
