@@ -1,7 +1,7 @@
 ---
-title: "How to Create AI Assistants with Code Execution Capabilities"
+title: "How to make AI Agents that Run Code"
 author: saba
-description: "A deep dive into how we've implemented code execution in AI systems at Khoj, and the implications for creating more capable and useful AI systems."
+description: "A deep dive into how we've implemented code execution with AI agents at Khoj, and the implications for creating more capable, reliable agents."
 heroImage: /purple_green_void.png
 pubDate: 2024-11-19
 keywords: ["quantitative data llm", "open-source", "code sandbox"]
