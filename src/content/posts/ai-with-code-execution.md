@@ -1,5 +1,5 @@
 ---
-title: "How to make AI Agents that Run Code"
+title: "How to Make AI Agents that Run Code"
 author: saba
 description: "A deep dive into how we've implemented code execution with AI agents at Khoj, and the implications for creating more capable, reliable agents."
 heroImage: /purple_green_void.png

@@ -190,6 +190,18 @@ html.dark code {
 	}
 }
 
+@media (min-width: 720px) {
+	pre {
+		white-space: pre; /* Preserve whitespace and prevent wrapping */
+		word-wrap: break-word; /* Breaks long words to fit within the container */
+		overflow-x: auto; /* Adds horizontal scroll if the content overflows */
+	}
+	pre > code {
+		white-space: pre-wrap; /* Wraps the code to fit within the container */
+		word-wrap: break-word; /* Breaks long words to fit within the container */
+	}
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;
