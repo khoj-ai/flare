@@ -102,7 +102,7 @@ p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 textarea {
 	width: 100%;
@@ -161,12 +161,29 @@ ol li {
 }
 
 ul {
-	padding-left: 1em;
+	padding-left: 2em;
 	margin: 1em 0;
 }
 
 ul li {
 	list-style-type: disc;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1em 0;
+}
+
+table th, table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+  
+table th {
+	background-color: grey;
+	color: #333;
 }
 
 html.dark {
