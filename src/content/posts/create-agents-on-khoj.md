@@ -7,7 +7,7 @@ pubDate: 2024-11-21
 keywords: ["ai agents", "open-source", "shareable knowledge"]
 ---
 
-Exciting news! Custom AI agents on Khoj are now available to all users! After carefully [validating safety measures](https://blog.khoj.dev/posts/safety-in-agents/) with our early paid users, we're psyched to make this powerful feature accessible to everyone.
+Custom AI agents on Khoj are now available to all users. After carefully [validating safety measures](https://blog.khoj.dev/posts/safety-in-agents/) with our early paid users, we're psyched to make this powerful feature accessible to everyone.
 
 ### What are Khoj Agents?
 
