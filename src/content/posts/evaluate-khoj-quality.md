@@ -68,8 +68,8 @@ These runs evaluate Khoj with gemini-1.5-flash-002 on a 200-question random subs
 
 | Benchmark | General | Default | Research | Baseline |
 |-----------|------|---------|---------|----------|
-| [FRAMES](https://huggingface.co/datasets/google/frames-benchmark) | [27.14](https://github.com/khoj-ai/khoj/actions/runs/11941817410/attempts/1#summary-33287504889) | [42.00](https://github.com/khoj-ai/khoj/actions/runs/11944716303/attempts/1#summary-33296136909) | [63.5](https://github.com/khoj-ai/khoj/actions/runs/11945673147/attempts/1#summary-33298733849) | 26.3% (flash-1.5-001) |
-| [SimpleQA](https://openai.com/index/introducing-simpleqa/) | [10.00](https://github.com/khoj-ai/khoj/actions/runs/11963066702/attempts/1#summary-33352767460) | [84.00](https://github.com/khoj-ai/khoj/actions/runs/11963354200/attempts/1#summary-33353634493) | [86.00](https://github.com/khoj-ai/khoj/actions/runs/11963916969/attempts/1#summary-33355284137) | 43.5% (o1 preview) |
+| [FRAMES](https://huggingface.co/datasets/google/frames-benchmark) | [27.1](https://github.com/khoj-ai/khoj/actions/runs/11941817410/attempts/1#summary-33287504889) | [42.0](https://github.com/khoj-ai/khoj/actions/runs/11944716303/attempts/1#summary-33296136909) | [63.5](https://github.com/khoj-ai/khoj/actions/runs/11945673147/attempts/1#summary-33298733849) | 26.3 (flash-1.5-001) |
+| [SimpleQA](https://openai.com/index/introducing-simpleqa/) | [10.0](https://github.com/khoj-ai/khoj/actions/runs/11963066702/attempts/1#summary-33352767460) | [84.0](https://github.com/khoj-ai/khoj/actions/runs/11963354200/attempts/1#summary-33353634493) | [86.0](https://github.com/khoj-ai/khoj/actions/runs/11963916969/attempts/1#summary-33355284137) | 43.5 (o1 preview) |
 
 The graphs below visualize the improvements across the 3 modes on the evaluated benchmarks:
 
@@ -82,15 +82,15 @@ The graphs below visualize the improvements across the 3 modes on the evaluated 
 Khoj upgrades small hosted LLMs into AI agents that perform at or beyond the capabilities of state-of-the-art LLMs across both these modern benchmarks.
 
 #### Improvements on the FRAMES Benchmark
-- General to Default mode: **55%** improvement from 27% to 42%.
-- Default to Research mode: **50% additional** improvement from 42% to 63.5%.
-- Khoj more than doubled **(137%) the accuracy of gemini-1.5-flash** from 27% to 63.5%. This seems close to saturating the models reasoning capabilities on this benchmark.
+- General to Default mode: **54.8%** improvement from 27.1% to 42.0%.
+- Default to Research mode: **51.2% additional** improvement from 42.0% to 63.5%.
+- Khoj more than doubled **(141.4%) the accuracy of gemini-1.5-flash** from the baseline of 26.3% to 63.5%. This seems close to saturating the models reasoning capabilities on this benchmark.
 - Khoj research mode upgrades gemini-1.5-flash (63.5%) to achieve gemini-1.5-pro performance (66%) with the multi-step retrieval from the FRAMES paper.
 - For reference when shown all relevant documents gemini-1.5-flash achieves a 66.5% score. This is the ceiling of the model's reasoning capabilities given perfect retrieval.
 
 #### Improvements on the SimpleQA Benchmark
-- General to Default mode: **740%** improvement from 10% to 84%.
-- Default to Research mode: 2.4% additional improvement from 84% to **86%**.
+- General to Default mode: **740.0%** improvement from 10.0% to 84.0%.
+- Default to Research mode: 2.4% additional improvement from 84.0% to **86.0%**.
 - The massive jump from General to Default mode seems to saturate the eval. The research mode accuracy is reported just for completeness.
 - Khoj upgrades small LLMs to achieve 2x the accuracy of modern state-of-the-art LLMs and close to human performance on the SimpleQA benchmark.
 - For reference the strongest model, o1-preview, scores a 43.5% and humans got a [94.4%](https://openai.com/index/introducing-simpleqa/#:~:text=We%20found%20that%20the%20third%20AI%20trainer%E2%80%99s%20answer%20matched%20the%20original%20agreed%20answers%2094.4%25%20of%20the%20time)[^3].
