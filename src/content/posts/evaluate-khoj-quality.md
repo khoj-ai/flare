@@ -84,21 +84,21 @@ Khoj upgrades small hosted LLMs into AI agents that perform at or beyond the cap
 #### Improvements on the FRAMES Benchmark
 - General to Default mode: **55%** improvement from 27% to 42%.
 - Default to Research mode: **50% additional** improvement from 42% to 63.5%.
-- Khoj more than doubled **(230%) the accuracy of gemini-1.5-flash** from 27% to 63.5%. This seems close to saturating the models reasoning capabilities on this benchmark.
+- Khoj more than doubled **(137%) the accuracy of gemini-1.5-flash** from 27% to 63.5%. This seems close to saturating the models reasoning capabilities on this benchmark.
 - Khoj research mode upgrades gemini-1.5-flash (63.5%) to achieve gemini-1.5-pro performance (66%) with the multi-step retrieval from the FRAMES paper.
 - For reference when shown all relevant documents gemini-1.5-flash achieves a 66.5% score. This is the ceiling of the model's reasoning capabilities given perfect retrieval.
 
 #### Improvements on the SimpleQA Benchmark
-- General to Default mode: **840%** improvement from 10% to 84%.
+- General to Default mode: **740%** improvement from 10% to 84%.
 - Default to Research mode: 2.4% additional improvement from 84% to **86%**.
 - The massive jump from General to Default mode seems to saturate the eval. The research mode accuracy is reported just for completeness.
 - Khoj upgrades small LLMs to achieve 2x the accuracy of modern state-of-the-art LLMs and close to human performance on the SimpleQA benchmark.
 - For reference the strongest model, o1-preview, scores a 43.5% and humans got a [94.4%](https://openai.com/index/introducing-simpleqa/#:~:text=We%20found%20that%20the%20third%20AI%20trainer%E2%80%99s%20answer%20matched%20the%20original%20agreed%20answers%2094.4%25%20of%20the%20time)[^3].
 
 #### Impact of Code Interpreter Tool
-Khoj can [run code](/posts/ai-with-code-execution). This ability results in notable accuracy improvements:
-- Default mode accuracy **without** code tool: 35.68%.
-- Default mode accuracy **with** code tool: 42.00%.
+Khoj can [run code](/posts/ai-with-code-execution). This ability results in notable accuracy improvements. Here are the results of its impact on the FRAMES benchmark when run in Default mode:
+- Accuracy **without** code tool: 35.68%.
+- Accuracy **with** code tool: 42.00%.
 - Net relative improvement: ~**18%** from 35.68% to 42.00%.
 
 ### Future Work
