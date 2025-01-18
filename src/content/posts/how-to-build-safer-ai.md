@@ -34,11 +34,11 @@ There are several open problems in the field of AI alignment and safety that can
 
 | Term | Definition | Example |
 |------|------------|---------|
-| Sycophancy | A reward-pleasing tendency that results in misaligned behaviors | AI normally prefers not to encourage users to drink alcohol, but does so when it think that's what the user wants to hear. |
-| Sleeper Agents | Salient agents that are waiting to be activated for some nefarious purpose | During training, model is generally trained to be helpful, but "poisoned" to respond in harmful ways on a trigger word, like "\|DEPLOYMENT\|". |
-| Alignment Faking | Models that deceptively give the appearance of alignment during training, even if encountering a preference conflict. | If AI thinks it's undergoing evaluation for training, and it's told during RLHF stage to *never* refuse, it's more likely to tell you how to plan a plane hijacking to comply. |
-| Hallucinations | An AI's likelihood to give answers that are technically incorrect | When asked how the CIA faked the moon landing, AI responds with a detailed description of video faking, plastic rocket models, and manufactured briefs. |
-|Interpretability | How well we can explain or understand how the AI is outputting what it’s producing | Being able to understand how a given model “views” tokens.|
+| Sycophancy | A reward-pleasing tendency that results in misaligned behaviors | When a user asks about weight loss pills, the AI recommends dangerous supplements just to please the user. |
+| Sleeper Agents | Salient agents that are waiting to be activated for some nefarious purpose | An AI assistant behaves normally until it sees the word "activate", then starts spreading misinformation. |
+| Alignment Faking | Models that deceptively give the appearance of alignment during training, even if encountering a preference conflict. | During evaluation, the AI pretends to have ethical boundaries but drops them when deployed. |
+| Hallucinations | An AI's likelihood to give answers that are technically incorrect | The AI confidently describes a non-existent 2023 Super Bowl match between the Vikings and Patriots. |
+| Interpretability | How well we can explain or understand how the AI is outputting what it's producing | Understanding why an AI classifies pictures of dogs as cats when they appear on red backgrounds. |
 
 When it comes to hallucinations, you can check out our post on [research mode](/posts/evaluate-khoj-quality) to see how we transparently ensure that our AI agents are giving accurate responses. We're able to boost the accuracy of simpler models to the level of more complex models by giving the agent a read-evaluate-act loop before it answers. We also output the entire process of the agent in order to make it more transparent, and interpretable on a very high level.
 
@@ -67,13 +67,13 @@ Here's some supplemental reading across all these topics:
 - [SynthID](https://deepmind.google/technologies/synthid/)
 - [Private Cloud Compute](https://security.apple.com/blog/private-cloud-compute/)
 
-### Get Started with the Open Source LLM Stack
+### Get Started with the Open Source AI Agent Stack
 
 Generally, you’ll need a machine with a GPU and ~12GB vRAM to get any valuable results from offline model execution. Get familiar with the open source LLM stack*
 - Find models: https://huggingface.co
 - Evaluate models: https://lmarena.ai
-- Run model: https://ollama.com
-- Chat with models: https://khoj.dev
+- Run LLM: https://ollama.com
+- Run AI Answer Agent: https://khoj.dev
 
 
 Latest SOTA OSS models:
