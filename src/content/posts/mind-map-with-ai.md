@@ -28,3 +28,18 @@ Now, I should mention - this isn’t perfect. Getting AI agents to consistently 
 You can try it out yourself. Try asking the AI to create a mind map about the components of a nucleus, a vacation plan, the causes of the nuclear arms race. Watch how it breaks down the complex factors/attributes into interconnected categories and subpoints. Be prepared to do some tweaking, but that’s part of the fun.
 
 This is a neat entrypoint into seeing how AI can dynamically respond to your specific needs.
+
+## Notice (01-29-2025)
+
+At the time that we originally published this feature and this blog post, we were using Excalidraw (as described above). While we were really excited about the potential of Excalidraw to build rich diagrams while helping you stay in flow, it turns out that most LLMs weren't quite ready for prime time in this context. We've since migrated over to [mermaid.js](https://mermaid.js.org/).
+
+Our learnings from this development process were super valuable. Namely:
+1. Most LLMs will struggle with the complexity of generating bespoke, object-specific JSON formats. Particularly if they require a specific syntax and demand a high level of detail. Excalidraw's syntax generally needed very explicit declaration of shapes, positions, connections, and text.
+2. The reason Mermaid.js in particular lends itself to this task is that it's a declarative language that's still digestible in plaintext format. It's much easier for LLMs to generate a simple text-based representation of a diagram than it is to generate a JSON object with specific properties.
+3. For more complex formats, you'll want to bake auto-correction into your agent tooling. This way, the AI can generate a rough draft, and then access an iteration loop to perfect it. We do this for code generation in research mode. It would have been too much work to implement this for Excalidraw, but it's a good idea for future projects.
+
+Here's a sample output:
+
+![Mermaid.js diagram of the American Civil War](/american_civil_war_0129.png)
+
+Pretty neat, right? We figure it's useful to share our learnings and our journey with you. We're always iterating and improving, and we hope you are too. If you have any questions or want to chat about how we're using AI in our tools, feel free to reach out. We're always happy to share our experiences and learn from yours.
