@@ -1,76 +1,86 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
-import { Icon } from 'astro-icon/components'
 ---
 
 <header>
 	<nav>
-		<h2 class="header-parent">
-			<a href="https://khoj.dev"><img class="header-icon" src="/icons/logo_type.svg"></img></a>
-		</h2>
-		<div class="internal-links pb-2">
-			<a href="/">Blog</a>
+		<div class="logo">
+			<a href="https://khoj.dev">
+				<img class="header-icon" src="/icons/logo_type.svg" alt="Khoj" />
+			</a>
 		</div>
-		<div class="social-links">
-			<a href="https://twitter.com/khoj_ai" target="_blank">
-				<span class="sr-only">Follow Khoj on Twitter</span>
-				<Icon name="ph:twitter-logo" size={24} />
-			</a>
-			<a href="https://github.com/khoj-ai/khoj" target="_blank">
-				<span class="sr-only">Follow Khoj Development on GitHub</span>
-				<Icon name="ph:github-logo" size={24} />
-			</a>
+		<div class="nav-links">
+			<a class="current" href="/">Blog</a>
+			<a href="https://docs.khoj.dev" target="_blank">Docs</a>
+			<a href="https://github.com/khoj-ai" target="_blank">GitHub</a>
 			<ThemeIcon />
 		</div>
 	</nav>
 </header>
+
 <style>
-	.header-parent a {
-		display: flex;
-		align-items: center;
-	}
-	
-	img.header-icon {
-		height: 28px;
-		border-radius: 0;
-	}
-
 	header {
-		margin: 0;
-		padding: 0 1em;
-		box-shadow: 0 2px 8px rgba(var(--black), 10%);
-	}
-
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 16px 24px;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
+
+	nav a.current {
+		font-weight: var(--font-semibold);
 	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
+	.logo a {
 		display: flex;
+		align-items: center;
 	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
+
+	img.header-icon {
+		height: 24px;
+		border-radius: 0;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	.nav-links a {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: 400;
+		letter-spacing: -0.01em;
+		color: var(--color-text-nav);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.nav-links a:hover {
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+
+	@media (max-width: 768px) {
+		nav {
+			padding: 12px 20px;
+		}
+
+		.nav-links {
+			gap: 16px;
+		}
+
+		.nav-links a {
+			font-size: 14px;
+		}
+
+		img.header-icon {
+			height: 20px;
 		}
 	}
 </style>

@@ -1,0 +1,65 @@
+/*
+ * Khoj Design Tokens - Dark Mode
+ *
+ * Dark mode color overrides for the Khoj design system.
+ * Import after design-tokens.css to enable dark mode.
+ *
+ * Supports both:
+ * - System preference via prefers-color-scheme
+ * - Manual toggle via .dark/.light class on :root
+ *
+ * Manual toggle takes precedence over system preference.
+ */
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #1a1a1a;
+		--color-text: #e0e0e0;
+		--color-text-muted: #a0a0a0;
+		--color-text-nav: #c0c0c0;
+		--color-link: #e0e0e0;
+		--color-link-hover: #fff;
+		--color-border: #333;
+		--color-separator: #555;
+		--color-badge-bg: #2a2a2a;
+		--color-badge-text: #a0a0a0;
+		--color-code-bg: #2a2a2a;
+		--color-button-bg-hover: #e0e0e0;
+		--color-button-text-hover: #1a1a1a;
+	}
+}
+
+/* Manual light mode override (when user explicitly chooses light) */
+:root.light {
+	--color-bg: #fff;
+	--color-text: #282828;
+	--color-text-muted: #676767;
+	--color-text-nav: #3c3836;
+	--color-link: #282828;
+	--color-link-hover: #000;
+	--color-border: #eee;
+	--color-separator: #ccc;
+	--color-badge-bg: #f5f5f5;
+	--color-badge-text: #676767;
+	--color-code-bg: #f5f5f5;
+	--color-button-bg-hover: #282828;
+	--color-button-text-hover: #fff;
+}
+
+/* Manual dark mode override (when user explicitly chooses dark) */
+:root.dark {
+	--color-bg: #1a1a1a;
+	--color-text: #e0e0e0;
+	--color-text-muted: #a0a0a0;
+	--color-text-nav: #c0c0c0;
+	--color-link: #e0e0e0;
+	--color-link-hover: #fff;
+	--color-border: #333;
+	--color-separator: #555;
+	--color-badge-bg: #2a2a2a;
+	--color-badge-text: #a0a0a0;
+	--color-code-bg: #2a2a2a;
+	--color-button-bg-hover: #e0e0e0;
+	--color-button-text-hover: #1a1a1a;
+}

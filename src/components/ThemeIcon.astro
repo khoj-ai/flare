@@ -2,8 +2,8 @@
 
 ---
 
-<button id="themeToggle" title="Toggle dark/light mode">
-    <svg width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<button id="themeToggle" title="Toggle theme (light/dark/auto)" aria-label="Toggle theme">
+    <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
             class="sun"
             fill-rule="evenodd"
@@ -14,6 +14,11 @@
             fill-rule="evenodd"
             d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z"
         ></path>
+        <!-- Auto icon: circle split half light/half dark -->
+        <g class="auto">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M12 3a9 9 0 0 1 0 18V3z" fill="currentColor"></path>
+        </g>
     </svg>
 </button>
 
@@ -22,79 +27,76 @@
         border: 0;
         background: none;
         cursor: pointer;
-        padding: 0.75em 0.5em 1em;
-    }
-    .sun {
-        fill: transparent;
-    }
-    .moon {
-        fill: black;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        color: var(--color-text-nav);
     }
 
-    :global(.dark) .sun {
-        fill: white;
-    }
-    :global(.dark) .moon {
-        fill: transparent;
-    }
+    /* Hide all icons by default */
+    .sun, .moon { fill: transparent; }
+    .auto { display: none; }
+
+    /* Light mode: show moon (click to go darker) */
+    :global(html.light) .moon { fill: var(--color-text-nav); }
+
+    /* Dark mode: show sun (click to go lighter) */
+    :global(html.dark) .sun { fill: var(--color-text-nav); }
+
+    /* Auto mode: show auto icon */
+    :global(html.auto-theme) .auto { display: block; }
 </style>
 
 <script is:inline>
-    const theme = (() => {
-        console.log("loading theme");
-        if (
-            typeof localStorage !== "undefined" &&
-            localStorage.getItem("theme")
-        ) {
-            console.log(
-                "returning localStorage.getItem('theme')",
-                localStorage.getItem("theme"),
-            );
-            return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            return "dark";
-        }
-        return "light";
-    })();
+    const storedTheme = typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    const rootStyles = getComputedStyle(document.documentElement);
-    const lightBackgroundColor = rootStyles
-        .getPropertyValue("--background-color-light")
-        .trim();
-    const darkBackgroundColor = rootStyles
-        .getPropertyValue("--background-color-dark")
-        .trim();
+    const lightBackgroundColor = "#fff";
+    const darkBackgroundColor = "#1a1a1a";
 
-    if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-        document.body.style.backgroundColor = lightBackgroundColor;
-    } else {
-        document.documentElement.classList.add("dark");
-        document.body.style.backgroundColor = darkBackgroundColor;
-    }
-
-    window.localStorage.setItem("theme", theme);
-
-    const handleToggleClick = () => {
+    function applyTheme(theme) {
         const element = document.documentElement;
-        element.classList.toggle("dark");
+        element.classList.remove("light", "dark", "auto-theme");
 
-        const isDark = element.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-
-        const rootStyles = getComputedStyle(document.documentElement);
-        const lightBackgroundColor = rootStyles
-            .getPropertyValue("--background-color-light")
-            .trim();
-        const darkBackgroundColor = rootStyles
-            .getPropertyValue("--background-color-dark")
-            .trim();
-        if (isDark) {
+        if (theme === "light") {
+            element.classList.add("light");
+            document.body.style.backgroundColor = lightBackgroundColor;
+        } else if (theme === "dark") {
+            element.classList.add("dark");
             document.body.style.backgroundColor = darkBackgroundColor;
         } else {
-            document.body.style.backgroundColor = lightBackgroundColor;
+            // Auto: follow system preference
+            element.classList.add("auto-theme");
+            document.body.style.backgroundColor = systemPrefersDark ? darkBackgroundColor : lightBackgroundColor;
         }
+    }
+
+    // Apply initial theme
+    applyTheme(storedTheme || "auto");
+
+    // Listen for system preference changes when in auto mode
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        const currentTheme = localStorage.getItem("theme");
+        if (!currentTheme || currentTheme === "auto") {
+            document.body.style.backgroundColor = e.matches ? darkBackgroundColor : lightBackgroundColor;
+        }
+    });
+
+    const handleToggleClick = () => {
+        const currentTheme = localStorage.getItem("theme") || "auto";
+
+        // Cycle: auto → light → dark → auto
+        let nextTheme;
+        if (currentTheme === "auto") {
+            nextTheme = "light";
+        } else if (currentTheme === "light") {
+            nextTheme = "dark";
+        } else {
+            nextTheme = "auto";
+        }
+
+        localStorage.setItem("theme", nextTheme);
+        applyTheme(nextTheme);
     };
 
     document

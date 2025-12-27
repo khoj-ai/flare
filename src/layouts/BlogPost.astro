@@ -26,65 +26,115 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
-				display: grid;
-				grid-template-rows: auto auto;
-				width: 50vw;
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 0 auto;
+				padding: 48px 24px;
 			}
+
 			article {
-				flex: 1 0 auto;
-			}
-			aside {
-				flex: 1 0 300px;
-				padding: 1em;
-			}
-			img.hero-image {
 				width: 100%;
-				height: auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
 			}
+
 			.prose {
 				width: 100%;
 				max-width: 100%;
-				margin: auto;
 			}
+
+			.article-header {
+				margin-bottom: 32px;
+			}
+
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				line-height: 1;
-				color: var(--title-color);
+				font-family: var(--font-heading);
+				font-size: var(--text-2xl);
+				font-weight: var(--font-normal);
+				letter-spacing: var(--tracking-normal);
+				line-height: var(--leading-tight);
+				color: var(--color-text);
+				margin-bottom: var(--space-4);
 			}
-			.date {
-				margin-bottom: 0.5em;
+
+			.keywords {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 16px;
 			}
-			.last-updated-on {
+
+			.keyword {
+				display: inline-block;
+				font-family: var(--font-heading);
+				font-size: var(--text-xs);
+				font-weight: var(--font-medium);
+				letter-spacing: var(--tracking-wider);
+				text-transform: uppercase;
+				color: var(--color-badge-text);
+				background: var(--color-badge-bg);
+				padding: var(--space-1) var(--space-2);
+				border-radius: var(--radius-sm);
+			}
+
+			.meta {
+				font-size: var(--text-sm);
+				color: var(--color-text-muted);
+				margin-bottom: var(--space-4);
+			}
+
+			.meta .last-updated {
 				font-style: italic;
+				margin-top: 4px;
 			}
-			div.author {
-				display: grid;
-				grid-template-columns: auto 1fr;
-				grid-gap: 10px;
+
+			.author {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 24px;
 			}
-			div.share-info {
-				display: grid;
-				grid-template-rows: auto 1fr;
+
+			.author-image img {
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
 			}
-			a.share-button {
+
+			.author-name {
+				font-size: var(--text-sm);
+				color: var(--color-text);
+			}
+
+			.author-name a {
+				color: var(--color-text);
 				text-decoration: none;
 			}
 
-			img.share-button {
-				border-radius: 0px;
+			.author-name a:hover {
+				color: var(--color-link-hover);
 			}
 
-			@media screen and (max-width: 720px) {
+			hr {
+				border: none;
+				border-top: 1px solid var(--color-border);
+				margin: 24px 0 32px;
+			}
+
+			:global(li[id^="user-content-fn-"]) {
+				font-style: italic;
+			}
+
+			@media (max-width: 768px) {
 				main {
-					display: block;
-					width: 90vw;
+					padding: 24px 20px;
 				}
-				article,
-				aside {
-					flex: 1 0 100%;
+
+				.title {
+					font-size: 24px;
+				}
+
+				.author-image img {
+					width: 32px;
+					height: 32px;
 				}
 			}
 		</style>
@@ -94,43 +144,38 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 		<main>
 			<article>
 				<div class="prose">
-					<div class="title">
-						<h1 class="text-2xl md:text-4xl">{title}</h1>
+					<div class="article-header">
+						<h1 class="title">{title}</h1>
 						{
-							keywords && (
-								<div class="my-3 text-sm inline-grid grid-flow-row md:grid-flow-col">
+							keywords && keywords.length > 0 && (
+								<div class="keywords">
 									{keywords.map((keyword) => (
-										<span class="rounded-lg text-green-50 items-center content-center h-fit dark:bg-slate-400 bg-slate-800 w-fit py-1 px-1 m-1">
-											{keyword}
-										</span>
+										<span class="keyword">{keyword}</span>
 									))}
 								</div>
 							)
 						}
-						<div class="date text-sm">
+						<div class="meta">
 							<FormattedDate date={pubDate} />
 							{
 								updatedDate && (
-									<div class="last-updated-on">
+									<div class="last-updated">
 										Last updated on{" "}
 										<FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
 						</div>
-						<div class="flex flex-row my-4 items-center gap-2">
+						<div class="author">
 							<div class="author-image">
 								<img
 									src={authorObj.avatar}
 									alt={authorObj.name}
-									width={32}
-									height={32}
-									style={{ borderRadius: "50%" }}
 								/>
 							</div>
-							<div class="author-info">
-								<a href={authorObj.twitter} class="author-link text-sm">
-									<div class="author-name">{authorObj.name}</div>
+							<div class="author-name">
+								<a href={authorObj.twitter}>
+									{authorObj.name}
 								</a>
 							</div>
 						</div>
@@ -139,9 +184,6 @@ const authorObj = AUTHOR_METADATA[author as keyof typeof AUTHOR_METADATA];
 					<slot />
 				</div>
 			</article>
-			<aside>
-				<br />
-			</aside>
 		</main>
 		<Footer />
 	</body>

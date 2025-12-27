@@ -1,83 +1,89 @@
 ---
-import { Icon } from 'astro-icon/components'
 const today = new Date();
 ---
 
 <footer>
 	<div class="links">
-		<div class="link-group">
-			<a href="https://khoj.dev" target="_blank" rel="noopener noreferrer">
-				<Icon name="ph:house" size={24} />
-				<span>Home</span>
-			</a>
-			<a href="https://docs.khoj.dev" target="_blank" rel="noopener noreferrer">
-				<Icon name="ph:book-bookmark" size={24} />
-				<span>Docs</span>
-			</a>
-			<a href="https://app.khoj.dev" target="_blank" rel="noopener noreferrer">
-				<Icon name="khoj" size={24} />
-				<span>App</span>
-			</a>
-		</div>
-		<div class="link-group">
-			<a href="https://discord.gg/BDgyabRM6e" target="_blank">
-				<Icon name="ph:discord-logo" size={28} />
-				<span>Discord</span>
-			</a>
-			<a href="https://twitter.com/khoj_ai" target="_blank">
-				<Icon name="ph:twitter-logo" size={28} />
-				<span>Twitter</span>
-			</a>
-			<a href="https://www.linkedin.com/company/97838617/" target="_blank">
-				<Icon name="ph:linkedin-logo" size={28} />
-				<span>LinkedIn</span>
-			</a>
-			<a href="https://github.com/khoj-ai/khoj" target="_blank">
-				<Icon name="ph:github-logo" size={28} />
-				<span>GitHub</span>
-			</a>
-		</div>
+		<nav class="left">
+			<a href="https://app.khoj.dev" target="_blank">Khoj Cloud</a>
+			<span class="separator">·</span>
+			<a href="https://openpaper.ai/home" target="_blank">Open Paper</a>
+		</nav>
+		<nav class="right">
+			<a href="https://twitter.com/khoj_ai" target="_blank">Twitter</a>
+			<span class="separator">·</span>
+			<a href="https://discord.gg/BDgyabRM6e" target="_blank">Discord</a>
+			<span class="separator">·</span>
+			<a href="https://www.linkedin.com/company/khoj-ai/" target="_blank">LinkedIn</a>
+			<span class="separator">·</span>
+			<a href="https://github.com/khoj-ai" target="_blank">GitHub</a>
+		</nav>
 	</div>
-	<div class="text-sm sm:pt-1 pt-4">
+	<p class="copyright">
 		&copy; {today.getFullYear()} Khoj Inc. All rights reserved.
-	</div>
+	</p>
 </footer>
+
 <style>
 	footer {
-		display: flex;
-		flex-direction: column;
+		padding: 48px 24px 24px;
 		text-align: center;
-		padding: 1em;
-		box-shadow: 0 2px 8px rgba(var(--black), 25%);
+		border-top: 1px solid var(--color-border);
 	}
 
 	.links {
 		display: flex;
-		flex-direction: row;
 		justify-content: space-between;
-		gap: 1em;
-	}
-	.link-group {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		font-size: small;
-	}
-	.link-group a {
-		display: flex;
-		gap: 0.25em;
-		text-decoration: none;
-		color: rgb(var(--gray));
-		width: auto;
 		align-items: center;
-	}
-	.link-group a:hover {
-		color: rgb(var(--gray-dark));
+		max-width: 720px;
+		margin: 0 auto 24px;
 	}
 
-	@media (max-width: 720px) {
+	nav {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	nav a {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: 400;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	nav a:hover {
+		color: var(--color-link-hover);
+	}
+
+	.separator {
+		color: var(--color-separator);
+	}
+
+	.copyright {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		footer {
+			padding: 32px 20px 20px;
+		}
+
 		.links {
 			flex-direction: column;
+			gap: 16px;
+		}
+
+		nav {
+			justify-content: center;
+		}
+
+		nav a {
+			font-size: 14px;
 		}
 	}
 </style>

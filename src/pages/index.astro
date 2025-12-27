@@ -18,43 +18,139 @@ const posts = (await getCollection("posts")).sort(
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<style>
 			main {
-				width: 960px;
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 0 auto;
+				padding: 48px 24px;
+			}
+
+			.page-header {
+				margin-bottom: 48px;
+			}
+
+			.page-title {
+				font-family: var(--font-heading);
+				font-size: var(--text-3xl);
+				font-weight: var(--font-normal);
+				letter-spacing: var(--tracking-wide);
+				color: var(--color-text);
+				margin-bottom: var(--space-2);
+			}
+
+			.page-description {
+				font-size: var(--text-base);
+				color: var(--color-text-muted);
+				font-style: italic;
+			}
+
+			.posts-list {
+				display: flex;
+				flex-direction: column;
+				gap: 32px;
+			}
+
+			.post-card {
+				display: flex;
+				flex-direction: row;
+				gap: 24px;
+				padding: 16px;
+				margin: -16px;
+				border-radius: 8px;
+				text-decoration: none;
+				transition: background-color 0.2s ease;
+			}
+
+			.post-card:hover {
+				background-color: var(--color-badge-bg);
+			}
+
+			.post-image {
+				flex-shrink: 0;
+				width: 160px;
+				height: 120px;
+				object-fit: cover;
+				border-radius: 8px;
+			}
+
+			.post-content {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.post-title {
+				font-family: var(--font-heading);
+				font-size: var(--text-xl);
+				color: var(--color-text);
+				margin-bottom: var(--space-2);
+				line-height: var(--leading-tight);
+			}
+
+			.post-date {
+				font-size: var(--text-sm);
+				color: var(--color-text-muted);
+				margin-bottom: var(--space-2);
+			}
+
+			.post-excerpt {
+				font-size: var(--text-sm);
+				color: var(--color-text-muted);
+				line-height: 1.5;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			@media (max-width: 768px) {
+				main {
+					padding: 24px 20px;
+				}
+
+				.post-card {
+					flex-direction: column;
+					gap: 16px;
+				}
+
+				.post-image {
+					width: 100%;
+					height: 180px;
+				}
+
+				.page-header {
+					margin-bottom: 32px;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section>
-				<div class="grid grid-cols-1 gap-4">
-					{
-						posts.map((post) => (
-							<a
-								href={`/posts/${post.slug}/`}
-								class="p-4rounded-lg flex flex-col md:flex-row gap-4 hover:bg-slate-200 dark:hover:bg-slate-800 my-2"
-							>
+			<div class="page-header">
+				<h1 class="page-title">Blog</h1>
+				<p class="page-description">Notes on building safe, useful ai for humans</p>
+			</div>
+			<section class="posts-list">
+				{
+					posts.map((post) => (
+						<a href={`/posts/${post.slug}/`} class="post-card">
+							{post.data.heroImage && (
 								<img
-									class="rounded-lg w-full md:w-40 h-40 md:h-full object-cover"
+									class="post-image"
 									src={post.data.heroImage}
 									alt=""
 								/>
-								<div>
-									<h4 class="mt-2 text-slate-800 dark:text-slate-200">
-										{post.data.title}
-									</h4>
-									<p class="dark:text-slate-50 text-slate-900 text-sm">
-										<FormattedDate
-											date={post.data.pubDate}
-										/>
-									</p>
-									<p class="excerpt text-slate-800 dark:text-slate-200">
-										{post.data.description}
-									</p>
-								</div>
-							</a>
-						))
-					}
-				</div>
+							)}
+							<div class="post-content">
+								<h2 class="post-title">{post.data.title}</h2>
+								<p class="post-date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+								<p class="post-excerpt">{post.data.description}</p>
+							</div>
+						</a>
+					))
+				}
 			</section>
 		</main>
 		<Footer />

@@ -1,156 +1,224 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ * Khoj Blog Styles
+ * Design system shared with khoj.dev for brand consistency
  */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
- 
+/* Import shared design tokens */
+@import './design-tokens.css';
+@import './design-tokens-dark.css';
+
+/* Import fonts matching khoj.dev */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Legacy variables for backward compatibility with existing components */
 :root {
-    --accent: #111011;
-	--title-color:  #6F9954;
-    --black: 0, 0, 0;
-    --gray: 128, 128, 128;
-    --gray-light: 211, 211, 211;
-    --gray-dark: 64, 64, 64;
-    --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-    --box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-        0 16px 32px rgba(var(--gray), 33%);
-	--background-color-light: #EAE8E1;
-	--background-color-dark: #222127;
-	--color1: #FAE4D0;
-	--color2: #FFF0A5;
-	--color3: #FFB03B;
-	--color4: #B64926;
-	--color5: #8E2800;
+	--accent: var(--color-text);
+	--title-color: var(--color-text);
+	--black: 40, 40, 40;
+	--gray: 103, 103, 103;
+	--gray-light: 245, 245, 245;
+	--gray-dark: 40, 40, 40;
+	--box-shadow: var(--shadow-md);
+	--background-color-light: #fff;
+	--background-color-dark: #1a1a1a;
 }
 
-/* Dark mode */
 :root.dark {
-    --accent: #F4F2EF;
-	--title-color: #cef3bb;
-    --black: 255, 255, 255;
-    --gray: 169, 169, 169;
-    --gray-light: 105, 105, 105;
-    --gray-dark: 47, 79, 79;
-    --gray-gradient: rgba(var(--gray-light), 50%), #000;
-    --box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-        0 16px 32px rgba(var(--gray), 33%);
+	--accent: var(--color-text);
+	--title-color: var(--color-text);
+	--black: 224, 224, 224;
+	--gray: 160, 160, 160;
+	--gray-light: 42, 42, 42;
+	--gray-dark: 51, 51, 51;
 }
 
-@font-face {
-    font-family: "Nunito", sans-serif !important;
-	src: url(https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1nzGBC5xLhLE.woff2) format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+/* Base styles */
+* {
+	box-sizing: border-box;
 }
+
 body {
-	font-family: "Nunito", sans-serif !important;
+	font-family: var(--font-body);
+	background-color: var(--color-bg);
+	color: var(--color-text);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	font-size: 20px;
-	line-height: 1.7;
+	font-size: var(--text-base);
+	line-height: var(--leading-normal);
 }
+
 main {
-	width: 720px;
+	width: var(--max-width-content);
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
+	padding: var(--space-12) var(--space-4);
 	font-size: 1.1rem;
-	line-height: normal;
+	line-height: var(--leading-normal);
 }
+
+/* Typography */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+	font-family: var(--font-heading);
 	margin: 0 0 0.5rem 0;
-	line-height: 1.2;
+	line-height: var(--leading-tight);
+	color: var(--color-text);
 }
+
 h1 {
-	font-size: 3.052em;
+	font-size: var(--text-3xl);
+	font-weight: var(--font-normal);
+	letter-spacing: var(--tracking-wide);
 }
+
 h2 {
-	font-size: 2.441em;
+	font-size: var(--text-2xl);
+	margin-bottom: var(--space-4);
 }
+
 h3 {
-	font-size: 1.953em;
+	font-size: var(--text-xl);
+	margin-bottom: var(--space-2);
 }
+
 h4 {
-	font-size: 1.563em;
+	font-size: var(--text-lg);
 }
+
 h5 {
-	font-size: 1.25em;
+	font-size: var(--text-base);
+	font-weight: var(--font-semibold);
 }
+
 strong,
 b {
-	font-weight: 700;
+	font-weight: var(--font-semibold);
 }
+
+/* Links */
 a {
-	color: var(--title-color);
+	color: var(--color-link);
+	text-decoration: none;
+	transition: color var(--transition-fast);
 }
+
 a:hover {
-	color: var(--title-color);
+	color: var(--color-link-hover);
 }
+
+/* Paragraphs */
 p {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
+	color: var(--color-text);
 }
+
 .prose p {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 }
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+/* Form elements */
 textarea {
 	width: 100%;
 	font-size: 16px;
+	font-family: inherit;
 }
+
 input {
 	font-size: 16px;
+	font-family: inherit;
 }
+
+/* Tables */
 table {
+	border-collapse: collapse;
 	width: 100%;
+	margin: 1em 0;
 }
+
+table th,
+table td {
+	border: 1px solid var(--color-border);
+	padding: var(--space-3);
+	text-align: left;
+}
+
+table th {
+	background-color: var(--color-badge-bg);
+	font-weight: var(--font-semibold);
+}
+
+/* Images */
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	border-radius: var(--radius-md);
 }
+
+/* Code */
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	font-family: var(--font-mono);
+	padding: 2px 6px;
+	background-color: var(--color-code-bg);
+	border-radius: var(--radius-sm);
+	font-size: 0.9em;
 }
+
 pre {
 	padding: 1.5em;
-	border-radius: 8px;
-	margin-bottom: 12px;
+	border-radius: var(--radius-md);
+	margin-bottom: 1.5em;
+	background-color: var(--color-code-bg);
+	overflow-x: auto;
 }
+
 pre > code {
 	all: unset;
+	font-family: var(--font-mono);
 }
+
+/* Blockquotes */
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid var(--color-border);
 	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+	margin: 1.5em 0;
+	font-style: italic;
+	color: var(--color-text-muted);
 }
+
+/* Horizontal rules */
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--color-border);
+	margin: 2em 0;
 }
+
+/* Details/Summary */
 details {
-	background-color: rgb(var(--gray-light));
-	border-radius: 8px;
+	background-color: var(--color-badge-bg);
+	border-radius: var(--radius-md);
 	padding: 1em;
 	margin: 1em 0;
 }
 
+summary {
+	cursor: pointer;
+	font-weight: var(--font-semibold);
+}
+
+/* Lists */
 ol {
-	padding-left: 1em;
+	padding-left: 1.5em;
 	margin: 1em 0;
 }
 
@@ -161,64 +229,133 @@ ol li {
 }
 
 ul {
-	padding-left: 2em;
+	padding-left: 1.5em;
 	margin: 1em 0;
 }
 
 ul li {
 	list-style-type: disc;
+	margin-bottom: 0.5em;
 }
 
-table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: 1em 0;
+/* Badge/Tag component - matching khoj.dev */
+.badge {
+	display: inline-block;
+	font-family: var(--font-heading);
+	font-size: var(--text-xs);
+	font-weight: var(--font-medium);
+	letter-spacing: var(--tracking-wider);
+	text-transform: uppercase;
+	color: var(--color-badge-text);
+	background: var(--color-badge-bg);
+	padding: var(--space-1) var(--space-2);
+	border-radius: var(--radius-sm);
+	margin-right: var(--space-2);
 }
 
-table th, table td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: left;
-}
-  
-table th {
-	background-color: grey;
-	color: #333;
+/* CTA Button - matching khoj.dev */
+.cta-button {
+	display: inline-block;
+	padding: 10px 24px;
+	border: 1px solid var(--color-text);
+	border-radius: var(--radius-full);
+	font-family: var(--font-heading);
+	font-size: 16px;
+	color: var(--color-text);
+	text-decoration: none;
+	transition: all var(--transition-fast);
 }
 
+.cta-button:hover {
+	background-color: var(--color-button-bg-hover);
+	color: var(--color-button-text-hover);
+}
+
+/* Dark mode body styles */
 html.dark {
-	background-color: #222127;
-	color: rgb(252, 251, 242);
+	background-color: var(--background-color-dark);
+	color: var(--color-text);
+}
+
+html.dark body {
+	background-color: var(--background-color-dark);
 }
 
 html.dark code {
 	color: #d4d4d4;
 }
-  
+
 .dark .nav-links a {
-	color: rgb(252, 251, 242);
+	color: var(--color-text);
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
+
+/* Light mode body styles (explicit override for system dark preference) */
+html.light {
+	background-color: var(--background-color-light);
+	color: var(--color-text);
+}
+
+html.light body {
+	background-color: var(--background-color-light);
+}
+
+.light .nav-links a {
+	color: var(--color-text);
+}
+
+/* Auto mode: follow system preference */
+@media (prefers-color-scheme: dark) {
+	html.auto-theme {
+		background-color: var(--background-color-dark);
+		color: var(--color-text);
 	}
+
+	html.auto-theme body {
+		background-color: var(--background-color-dark);
+	}
+
+	html.auto-theme code {
+		color: #d4d4d4;
+	}
+
+	.auto-theme .nav-links a {
+		color: var(--color-text);
+	}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	body {
+		font-size: 16px;
+	}
+
 	main {
 		padding: 1em;
+	}
+
+	h1 {
+		font-size: 28px;
+	}
+
+	h2 {
+		font-size: 20px;
 	}
 }
 
 @media (min-width: 720px) {
 	pre {
-		white-space: pre; /* Preserve whitespace and prevent wrapping */
-		word-wrap: break-word; /* Breaks long words to fit within the container */
-		overflow-x: auto; /* Adds horizontal scroll if the content overflows */
+		white-space: pre;
+		word-wrap: break-word;
+		overflow-x: auto;
 	}
+
 	pre > code {
-		white-space: pre-wrap; /* Wraps the code to fit within the container */
-		word-wrap: break-word; /* Breaks long words to fit within the container */
+		white-space: pre-wrap;
+		word-wrap: break-word;
 	}
 }
 
+/* Screen reader only */
 .sr-only {
 	border: 0;
 	padding: 0;
@@ -227,12 +364,8 @@ html.dark code {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }

@@ -1,0 +1,124 @@
+/*
+ * Khoj Design Tokens - Light Mode
+ *
+ * Shared design system tokens for brand consistency across:
+ * - khoj.dev (main website)
+ * - blog.khoj.dev (blog)
+ * - docs.khoj.dev (documentation)
+ *
+ * For dark mode support, also import design-tokens-dark.css
+ */
+
+:root {
+	/* =============================================
+	 * COLORS - Light Mode
+	 * ============================================= */
+
+	/* Primary */
+	--color-bg: #fff;
+	--color-text: #282828;
+
+	/* Secondary / Muted */
+	--color-text-muted: #676767;
+	--color-text-nav: #3c3836;
+
+	/* Interactive */
+	--color-link: #282828;
+	--color-link-hover: #000;
+
+	/* Borders & Separators */
+	--color-border: #eee;
+	--color-separator: #ccc;
+
+	/* Components */
+	--color-badge-bg: #f5f5f5;
+	--color-badge-text: #676767;
+	--color-code-bg: #f5f5f5;
+
+	/* Buttons */
+	--color-button-bg-hover: #282828;
+	--color-button-text-hover: #fff;
+
+	/* =============================================
+	 * TYPOGRAPHY
+	 * ============================================= */
+
+	/* Font Families */
+	--font-heading: 'Roboto', 'Segoe UI', sans-serif;
+	--font-body: 'Source Serif 4', Georgia, serif;
+	--font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+
+	/* Font Sizes */
+	--text-xs: 11px;
+	--text-sm: 14px;
+	--text-base: 17px;
+	--text-lg: 20px;
+	--text-xl: 24px;
+	--text-2xl: clamp(28px, 5vw, 36px);
+	--text-3xl: clamp(32px, 6vw, 42px);
+	--text-4xl: clamp(40px, 8vw, 58px);
+
+	/* Font Weights */
+	--font-normal: 400;
+	--font-medium: 500;
+	--font-semibold: 600;
+
+	/* Line Heights */
+	--leading-tight: 1.2;
+	--leading-normal: 1.65;
+
+	/* Letter Spacing */
+	--tracking-tight: -0.01em;
+	--tracking-normal: 0;
+	--tracking-wide: 0.02em;
+	--tracking-wider: 0.05em;
+
+	/* =============================================
+	 * SPACING
+	 * ============================================= */
+
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 20px;
+	--space-6: 24px;
+	--space-7: 28px;
+	--space-8: 32px;
+	--space-10: 40px;
+	--space-12: 48px;
+	--space-16: 64px;
+	--space-20: 80px;
+
+	/* =============================================
+	 * LAYOUT
+	 * ============================================= */
+
+	--max-width-content: 720px;
+	--max-width-wide: 960px;
+	--padding-container: 24px;
+	--padding-container-mobile: 20px;
+
+	/* =============================================
+	 * BORDERS
+	 * ============================================= */
+
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-full: 100px;
+
+	/* =============================================
+	 * TRANSITIONS
+	 * ============================================= */
+
+	--transition-fast: 0.2s ease;
+	--transition-normal: 0.3s ease;
+
+	/* =============================================
+	 * SHADOWS
+	 * ============================================= */
+
+	--shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+	--shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
